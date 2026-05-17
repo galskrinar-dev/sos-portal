@@ -20,30 +20,23 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; overflow-x: hidden; }
         .heading-font { font-family: 'Outfit', sans-serif; }
-        
-        /* Animated Background Pattern */
         .bg-pattern {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
-            background-size: 32px 32px;
-            z-index: -1;
+            background-size: 32px 32px; z-index: -1;
         }
-
         .pulse-ring {
-            position: absolute;
-            top: 50%; left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px; height: 300px;
-            border-radius: 50%;
+            width: 300px; height: 300px; border-radius: 50%;
             background: rgba(239, 68, 68, 0.1);
-            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-            z-index: -1;
+            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; z-index: -1;
         }
         @keyframes pulse-ring {
             0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
             100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
         }
+        #ios-hint { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-center items-center p-6 relative">
@@ -63,26 +56,44 @@
             <p class="text-sm text-slate-400 font-medium">Nacionalni portal za krizno kartiranje, obveščanje in reševalna navodila (Offline-ready).</p>
         </div>
 
-        <div class="space-y-4 mb-10 text-left">
+        <div class="space-y-3 mb-8 text-left">
             <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
-                <i data-lucide="wifi-off" class="w-5 h-5 text-sky-400"></i>
+                <i data-lucide="wifi-off" class="w-5 h-5 text-sky-400 shrink-0"></i>
                 Deluje tudi brez internetne povezave
             </div>
             <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
-                <i data-lucide="bot" class="w-5 h-5 text-emerald-400"></i>
+                <i data-lucide="bot" class="w-5 h-5 text-emerald-400 shrink-0"></i>
                 Vgrajen pametni AI govorni asistent
             </div>
             <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
-                <i data-lucide="siren" class="w-5 h-5 text-rose-400"></i>
+                <i data-lucide="siren" class="w-5 h-5 text-rose-400 shrink-0"></i>
                 SOS Panik Gumb za 112 povezavo
             </div>
         </div>
 
         <div class="flex flex-col gap-3">
-            <button id="install-btn" class="hidden w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2">
+            <!-- Android/Desktop Chrome: Auto-shows when PWA criteria met -->
+            <button id="install-btn" class="hidden w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-rose-500/20 items-center justify-center gap-2">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                NAMESTI NA TELEFON (Android)
+            </button>
+
+            <!-- iOS Safari: Always show with instructions -->
+            <button id="ios-btn" onclick="document.getElementById('ios-hint').style.display='block'" class="w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 NAMESTI NA TELEFON
             </button>
+
+            <!-- iOS Step-by-step hint -->
+            <div id="ios-hint" class="bg-slate-900 border border-rose-500/30 rounded-2xl p-4 text-left text-xs text-slate-300 space-y-2">
+                <p class="font-bold text-rose-400 text-sm mb-3">📱 Navodila za namestitev:</p>
+                <div class="space-y-2">
+                    <p><span class="text-white font-bold">Android Chrome:</span> Kliknite ⋮ (meni) → "Dodaj na začetni zaslon"</p>
+                    <p><span class="text-white font-bold">iPhone Safari:</span> Kliknite <span class="bg-slate-700 px-1 rounded">⬆️ Deli</span> → "Dodaj na začetni zaslon"</p>
+                    <p><span class="text-white font-bold">Windows Chrome:</span> Kliknite <span class="bg-slate-700 px-1 rounded">⊕</span> v naslovni vrstici</p>
+                </div>
+                <button onclick="document.getElementById('ios-hint').style.display='none'" class="mt-2 text-slate-500 hover:text-white text-xs">Zapri</button>
+            </div>
             
             <a href="resevalec.html" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 rounded-2xl text-sm transition flex items-center justify-center gap-2">
                 ODPRI KOT SPLETNI PORTAL <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -98,42 +109,44 @@
     <script>
         lucide.createIcons();
 
-        // PWA Install Logic
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isAndroidChrome = /Android/.test(navigator.userAgent) && /Chrome/.test(navigator.userAgent);
+
+        // Hide iOS button on Android (will use native beforeinstallprompt)
+        if (isAndroidChrome) {
+            document.getElementById('ios-btn').style.display = 'none';
+        }
+
+        // PWA Install Logic for Chrome (Android & Desktop)
         let deferredPrompt;
         const installBtn = document.getElementById('install-btn');
 
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
             e.preventDefault();
-            // Stash the event so it can be triggered later.
             deferredPrompt = e;
-            // Update UI notify the user they can install the PWA
+            // Show native install button, hide manual one
             installBtn.classList.remove('hidden');
             installBtn.classList.add('flex');
+            document.getElementById('ios-btn').style.display = 'none';
         });
 
         installBtn.addEventListener('click', async () => {
-            if (deferredPrompt !== null) {
+            if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
                 deferredPrompt = null;
-                installBtn.classList.add('hidden');
+                if (outcome === 'accepted') {
+                    installBtn.textContent = '✅ Nameščeno!';
+                }
             }
         });
 
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').then(reg => {
-                    console.log('SW registered!', reg);
-                }).catch(err => {
-                    console.log('SW registration failed:', err);
-                });
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('✅ SW registered:', reg.scope))
+                    .catch(err => console.warn('SW failed:', err));
             });
         }
     </script>
