@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SOS Slovenija - Prenesi Aplikacijo</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#ef4444">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-alert.svg/192px-Circle-icons-alert.svg.png">
+
+    <!-- Fonts & Tailwind -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; overflow-x: hidden; }
+        .heading-font { font-family: 'Outfit', sans-serif; }
+        
+        /* Animated Background Pattern */
+        .bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+            z-index: -1;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
+        }
+        @keyframes pulse-ring {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center p-6 relative">
+    
+    <div class="bg-pattern"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring" style="animation-delay: 1.5s;"></div>
+
+    <main class="max-w-md w-full bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-[2.5rem] p-8 text-center shadow-2xl relative z-10 overflow-hidden">
+        
+        <div class="w-24 h-24 bg-gradient-to-br from-rose-500 to-rose-700 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-rose-500/30">
+            <i data-lucide="shield-alert" class="w-12 h-12 text-white"></i>
+        </div>
+
+        <div class="mb-8">
+            <h1 class="text-3xl font-black heading-font tracking-tight mb-2">SOS Slovenija</h1>
+            <p class="text-sm text-slate-400 font-medium">Nacionalni portal za krizno kartiranje, obveščanje in reševalna navodila (Offline-ready).</p>
+        </div>
+
+        <div class="space-y-4 mb-10 text-left">
+            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
+                <i data-lucide="wifi-off" class="w-5 h-5 text-sky-400"></i>
+                Deluje tudi brez internetne povezave
+            </div>
+            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
+                <i data-lucide="bot" class="w-5 h-5 text-emerald-400"></i>
+                Vgrajen pametni AI govorni asistent
+            </div>
+            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
+                <i data-lucide="siren" class="w-5 h-5 text-rose-400"></i>
+                SOS Panik Gumb za 112 povezavo
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+            <button id="install-btn" class="hidden w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                NAMESTI NA TELEFON
+            </button>
+            
+            <a href="resevalec.html" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 rounded-2xl text-sm transition flex items-center justify-center gap-2">
+                ODPRI KOT SPLETNI PORTAL <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+        
+    </main>
+
+    <footer class="mt-8 text-xs text-slate-500 font-medium tracking-wide">
+        CIVILNA ZAŠČITA &bull; UNDP DEMO 2026
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // PWA Install Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can install the PWA
+            installBtn.classList.remove('hidden');
+            installBtn.classList.add('flex');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt !== null) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+                installBtn.classList.add('hidden');
+            }
+        });
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log('SW registered!', reg);
+                }).catch(err => {
+                    console.log('SW registration failed:', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

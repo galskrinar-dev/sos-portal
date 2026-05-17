@@ -1,0 +1,22 @@
+{
+  "name": "SOS Zemljevid Slovenija",
+  "short_name": "SOS Zemljevid",
+  "description": "Nacionalni krizni portal in zemljevid izrednih razmer. Sledite informacijam in reševalnim navodilom.",
+  "start_url": "./resevalec.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#ef4444",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-alert.svg/192px-Circle-icons-alert.svg.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-alert.svg/512px-Circle-icons-alert.svg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
