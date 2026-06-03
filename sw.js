@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sos-kriza-v1';
+const CACHE_NAME = 'sos-kriza-v2';
 const urlsToCache = [
   './resevalec.html',
   './manifest.json',
@@ -16,6 +16,22 @@ self.addEventListener('install', event => {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
+      .then(() => self.skipWaiting()) // Force activation of the new Service Worker immediately
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            console.log('Clearing old cache:', cache);
+            return caches.delete(cache);
+          }
+        })
+      );
+    }).then(() => self.clients.claim()) // Immediately take control of the page
   );
 });
 
