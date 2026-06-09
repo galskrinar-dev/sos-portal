@@ -29,21 +29,17 @@
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary: #00f0ff;
-            --success: #00ff66;
-            --warning: #ffb700;
-            --danger: #ff0055;
-            --bg-dark: #080b11;
-            --panel-bg: rgba(13, 20, 35, 0.65);
-            --border-glow: rgba(0, 240, 255, 0.15);
+            --primary: #0284c7; /* OCHA Sky Blue */
+            --success: #10b981; /* Emerald Green */
+            --warning: #f59e0b; /* Amber Yellow */
+            --danger: #ef4444;  /* Emergency Red */
+            --bg-dark: #0f172a;  /* Dark Slate */
+            --panel-bg: #1e293b; /* Slate Gray */
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.03) 0%, transparent 40%);
             color: #f1f5f9;
             min-height: 100vh;
             overflow-x: hidden;
@@ -51,53 +47,30 @@
 
         .heading-font { font-family: 'Outfit', sans-serif; }
 
-        /* Neon Borders & Glassmorphism */
+        /* Professional Panels */
         .glass-panel {
             background: var(--panel-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .glow-border {
-            position: relative;
-        }
-        .glow-border::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            border: 1px solid transparent;
-            background: linear-gradient(135deg, var(--primary), var(--danger)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            opacity: 0.25;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        .glow-border:hover::after {
-            opacity: 0.5;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
         }
 
         .map-container {
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
             height: 520px;
             width: 100%;
         }
         #map { height: 100%; width: 100%; z-index: 1; background: #0c0f16; }
         .leaflet-control-attribution { display: none !important; }
 
-        /* Pulsing Neon Markers */
+        /* Pulsing Disaster Indicators (Non-Neon, Flat shadows) */
         .pulse-marker {
             width: 16px; height: 16px;
             border-radius: 50%;
             border: 2px solid white;
-            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
             position: relative;
         }
         .pulse-marker::after {
@@ -108,27 +81,27 @@
             animation: pulse-ring 1.8s cubic-bezier(0.24,0,0.38,1) infinite;
         }
 
-        .pulse-fire { background-color: var(--danger); box-shadow: 0 0 15px var(--danger); }
+        .pulse-fire { background-color: var(--danger); }
         .pulse-fire::after { border: 2px solid var(--danger); }
-        .pulse-flood { background-color: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
+        .pulse-flood { background-color: #3b82f6; }
         .pulse-flood::after { border: 2px solid #3b82f6; }
-        .pulse-road { background-color: var(--warning); box-shadow: 0 0 15px var(--warning); }
+        .pulse-road { background-color: var(--warning); }
         .pulse-road::after { border: 2px solid var(--warning); }
-        .pulse-quake { background-color: #a855f7; box-shadow: 0 0 15px #a855f7; }
+        .pulse-quake { background-color: #a855f7; }
         .pulse-quake::after { border: 2px solid #a855f7; }
-        .pulse-war { background-color: #f43f5e; box-shadow: 0 0 15px #f43f5e; }
+        .pulse-war { background-color: #f43f5e; }
         .pulse-war::after { border: 2px solid #f43f5e; }
-        .pulse-economy { background-color: var(--success); box-shadow: 0 0 15px var(--success); }
+        .pulse-economy { background-color: var(--success); }
         .pulse-economy::after { border: 2px solid var(--success); }
-        .pulse-info { background-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        .pulse-info { background-color: var(--primary); }
         .pulse-info::after { border: 2px solid var(--primary); }
-        .pulse-user { background-color: var(--success); box-shadow: 0 0 25px var(--success); }
+        .pulse-user { background-color: var(--success); }
         .pulse-user::after { border: 2px solid var(--success); animation: pulse-ring-user 1.5s ease-out infinite; }
-        .pulse-schools { background-color: #6366f1; box-shadow: 0 0 15px #6366f1; }
+        .pulse-schools { background-color: #6366f1; }
         .pulse-schools::after { border: 2px solid #6366f1; }
-        .pulse-utilities { background-color: #06b6d4; box-shadow: 0 0 15px #06b6d4; }
+        .pulse-utilities { background-color: #06b6d4; }
         .pulse-utilities::after { border: 2px solid #06b6d4; }
-        .pulse-public { background-color: #10b981; box-shadow: 0 0 15px #10b981; }
+        .pulse-public { background-color: #10b981; }
         .pulse-public::after { border: 2px solid #10b981; }
 
         @keyframes pulse-ring {
@@ -145,7 +118,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .chat-messages::-webkit-scrollbar { width: 4px; }
         .chat-messages::-webkit-scrollbar-track { background: transparent; }
-        .chat-messages::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.2); border-radius: 2px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
 
         /* Custom scrollbar for news feed */
         .custom-scroll { scrollbar-width: thin; }
@@ -155,7 +128,7 @@
 
         /* Language switcher */
         .lang-btn { transition: all 0.3s; }
-        .lang-btn.active { background: linear-gradient(135deg, var(--primary), #00a8ff); color: #080b11; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+        .lang-btn.active { background: var(--primary); color: white; font-weight: bold; }
         .lang-btn:not(.active) { background: rgba(255, 255, 255, 0.05); color: #94a3b8; }
         .lang-btn:not(.active):hover { background: rgba(255, 255, 255, 0.12); color: #f1f5f9; }
 
@@ -172,16 +145,16 @@
         /* Custom alert animation */
         .alert-pulse { animation: alert-glow 2s infinite; }
         @keyframes alert-glow {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.6); }
+            0%, 100% { box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2); }
+            50% { box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4); }
         }
 
         .neo-button {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .neo-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -194,16 +167,16 @@
     </div>
 
     <!-- TOP HEADER -->
-    <header class="bg-slate-950/70 backdrop-blur-md sticky top-0 z-50 border-b border-white/5 shadow-lg">
+    <header class="bg-slate-900 border-b border-slate-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center gap-3">
             <!-- Logo -->
             <div class="flex items-center gap-3 shrink-0">
-                <div class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white p-2.5 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/25">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-2.5 rounded-2xl flex items-center justify-center shadow-md shadow-blue-900/20">
                     <i data-lucide="globe-2" class="w-6 h-6"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold heading-font tracking-tight text-white flex items-center gap-2">
-                        SOS <span id="h-world" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">World</span> <span class="bg-cyan-500/10 text-cyan-400 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-cyan-500/20" id="h-portal">Crisis Portal</span>
+                        SOS <span id="h-world" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-400">World</span> <span class="bg-slate-800 text-slate-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-slate-700" id="h-portal">Crisis Portal</span>
                     </h1>
                     <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase" id="h-subtitle">Real-time global crisis mapping & AI assistance</p>
                 </div>
@@ -216,7 +189,7 @@
             </div>
 
             <!-- Language Switcher -->
-            <div class="flex items-center gap-1 bg-white/5 p-1 rounded-xl shrink-0 border border-white/5">
+            <div class="flex items-center gap-1 bg-slate-800 p-1 rounded-xl shrink-0 border border-slate-700">
                 <button class="lang-btn active text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('sl')" id="lang-sl">🇸🇮 SL</button>
                 <button class="lang-btn text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('en')" id="lang-en">🇬🇧 EN</button>
                 <button class="lang-btn text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('it')" id="lang-it">🇮🇹 IT</button>
@@ -225,16 +198,16 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="toggleDashboard()" class="bg-indigo-600/15 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/20 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-md" id="btn-dash">
-                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i> <span class="hidden md:inline" id="btn-dash-lbl">Dashboard</span>
+                <button onclick="toggleDashboard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm" id="btn-dash">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-400"></i> <span class="hidden md:inline" id="btn-dash-lbl">Dashboard</span>
                 </button>
-                <button onclick="autoGetLocation()" class="bg-emerald-500 hover:bg-emerald-600 text-emerald-950 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-lg shadow-emerald-500/20 flex items-center gap-1.5">
+                <button onclick="autoGetLocation()" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
                     <i data-lucide="map-pin" class="w-4 h-4"></i> <span class="hidden sm:inline" id="btn-myloc">My Location</span>
                 </button>
-                <button onclick="openCameras()" class="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/20 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5">
-                    <i data-lucide="video" class="w-4 h-4"></i> <span class="hidden sm:inline" id="btn-cams">Live Cameras</span>
+                <button onclick="openCameras()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="video" class="w-4 h-4 text-emerald-400"></i> <span class="hidden sm:inline" id="btn-cams">Live Cameras</span>
                 </button>
-                <button onclick="openReportModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-lg shadow-rose-600/20 flex items-center gap-1.5">
+                <button onclick="openReportModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
                     <i data-lucide="plus-circle" class="w-4 h-4"></i> <span id="btn-report">Report</span>
                 </button>
             </div>
@@ -265,12 +238,12 @@
                 </div>
             </div>
             <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-md flex items-center gap-3">
-                <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400">
+                <div class="p-3 rounded-xl bg-blue-500/10 text-blue-400">
                     <i data-lucide="newspaper" class="w-5 h-5"></i>
                 </div>
                 <div>
                     <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider" id="stat-label-3">News Source</span>
-                    <span class="text-xs font-extrabold text-cyan-400 uppercase">GDACS + Google</span>
+                    <span class="text-xs font-extrabold text-blue-400 uppercase">GDACS + Google</span>
                 </div>
             </div>
             <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-md flex items-center gap-3">
@@ -334,19 +307,19 @@
                 </div>
 
                 <!-- SOS Guide -->
-                <div class="glass-panel rounded-2xl p-5 border border-white/5">
+                <div class="glass-panel rounded-2xl p-5 border border-slate-700">
                     <h3 class="text-sm font-bold heading-font text-white mb-3 flex items-center gap-2">
-                        <i data-lucide="book-open" class="w-4 h-4 text-cyan-400"></i> <span id="section-guide">SOS Quick Guide</span>
+                        <i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> <span id="section-guide">SOS Quick Guide</span>
                     </h3>
-                    <div class="flex border-b border-white/5 text-xs font-bold text-slate-400 mb-3.5">
-                        <button onclick="switchSOSTab('tab-flood')" id="btn-tab-flood" class="flex-1 pb-2 border-b-2 border-cyan-500 text-cyan-400 transition" id="tab-btn-flood">🌊 <span id="tab-flood-lbl">Floods</span></button>
+                    <div class="flex border-b border-slate-700 text-xs font-bold text-slate-400 mb-3.5">
+                        <button onclick="switchSOSTab('tab-flood')" id="btn-tab-flood" class="flex-1 pb-2 border-b-2 border-sky-500 text-sky-400 transition font-bold" id="tab-btn-flood">🌊 <span id="tab-flood-lbl">Floods</span></button>
                         <button onclick="switchSOSTab('tab-fire')" id="btn-tab-fire" class="flex-1 pb-2 border-b-2 border-transparent hover:text-slate-200 transition">🔥 <span id="tab-fire-lbl">Fire</span></button>
                         <button onclick="switchSOSTab('tab-quake')" id="btn-tab-quake" class="flex-1 pb-2 border-b-2 border-transparent hover:text-slate-200 transition">🏠 <span id="tab-quake-lbl">Quake</span></button>
                     </div>
                     <div id="tab-flood" class="sos-tab-content text-xs text-slate-300 space-y-2.5">
-                        <div class="flex gap-2"><span class="bg-cyan-500/10 text-cyan-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-cyan-500/20">1</span><p id="guide-f1">Move to higher ground. Do not cross flowing water.</p></div>
-                        <div class="flex gap-2"><span class="bg-cyan-500/10 text-cyan-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-cyan-500/20">2</span><p id="guide-f2">Turn off electricity, gas and water before leaving home.</p></div>
-                        <div class="flex gap-2"><span class="bg-cyan-500/10 text-cyan-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-cyan-500/20">3</span><p id="guide-f3">Prepare emergency bag (documents, flashlight, water, first aid).</p></div>
+                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">1</span><p id="guide-f1">Move to higher ground. Do not cross flowing water.</p></div>
+                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">2</span><p id="guide-f2">Turn off electricity, gas and water before leaving home.</p></div>
+                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">3</span><p id="guide-f3">Prepare emergency bag (documents, flashlight, water, first aid).</p></div>
                     </div>
                     <div id="tab-fire" class="sos-tab-content text-xs text-slate-300 space-y-2.5 hidden">
                         <div class="flex gap-2"><span class="bg-rose-500/10 text-rose-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-rose-500/20">1</span><p id="guide-fi1">Call 112 immediately and state the location clearly.</p></div>
@@ -361,8 +334,12 @@
                 </div>
 
                 <!-- SOS Panic Button -->
-                <button onclick="triggerPanicMode()" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-4 rounded-2xl font-black text-xs transition duration-150 shadow-lg shadow-rose-600/30 flex items-center justify-center gap-2 alert-pulse uppercase tracking-wider">
+                <button onclick="triggerPanicMode()" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-4 rounded-2xl font-black text-xs transition duration-150 shadow-md flex items-center justify-center gap-2 alert-pulse uppercase tracking-wider">
                     <i data-lucide="siren" class="w-5 h-5 animate-bounce"></i> <span id="btn-panic">🆘 SOS PANIC – SEND LOCATION</span>
+                </button>
+                <!-- Volunteer Button -->
+                <button onclick="registerVolunteer()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-3.5 rounded-2xl font-bold text-xs transition duration-150 border border-slate-700 flex items-center justify-center gap-2 mt-3 shadow-sm" id="btn-volunteer-reg">
+                    <i data-lucide="heart" class="w-4 h-4 text-emerald-400"></i> <span id="btn-vol-lbl">🤝 Register as Volunteer</span>
                 </button>
             </div>
         </div>
@@ -372,34 +349,34 @@
 
             <!-- AI CHAT (5/12) -->
             <div class="lg:col-span-5">
-                <div class="glass-panel rounded-2xl border border-white/5 shadow-2xl overflow-hidden flex flex-col chat-box">
+                <div class="glass-panel rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col chat-box">
                     <!-- Chat Header -->
-                    <div class="bg-slate-950 px-5 py-4 flex justify-between items-center border-b border-white/5">
+                    <div class="bg-slate-900 px-5 py-4 flex justify-between items-center border-b border-slate-800">
                         <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div>
-                            <span class="text-xs font-bold tracking-wider uppercase text-cyan-400 heading-font" id="chat-header-title">AI SOS Assistant</span>
+                            <div class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></div>
+                            <span class="text-xs font-bold tracking-wider uppercase text-sky-400 heading-font" id="chat-header-title">AI SOS Assistant</span>
                         </div>
-                        <span class="text-[9px] text-slate-400 font-bold bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg">Gemini 1.5 Flash</span>
+                        <span class="text-[9px] text-slate-400 font-bold bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-lg">Gemini 1.5 Flash</span>
                     </div>
                     <!-- Chat Messages -->
-                    <div id="chat-messages" class="chat-messages p-5 space-y-4 bg-slate-900/20">
+                    <div id="chat-messages" class="chat-messages p-5 space-y-4 bg-slate-900/10">
                         <div class="flex items-start gap-3 max-w-[85%]">
-                            <div class="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xs shrink-0 font-bold shadow-sm border border-cyan-500/20">AI</div>
-                            <div class="bg-white/5 p-3.5 rounded-2xl rounded-tl-sm border border-white/5 shadow-md text-xs text-slate-200 leading-relaxed" id="ai-greeting">
+                            <div class="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xs shrink-0 font-bold shadow-sm border border-sky-500/25">AI</div>
+                            <div class="bg-slate-800 p-3.5 rounded-2xl rounded-tl-sm border border-slate-700 shadow-md text-xs text-slate-200 leading-relaxed" id="ai-greeting">
                                 Hello! I am your global AI Crisis Assistant. I can help with emergency guidance in any language. What do you need?
                             </div>
                         </div>
                     </div>
                     <!-- Quick Replies -->
-                    <div class="px-4 py-2 border-t border-white/5 flex gap-2 overflow-x-auto no-scrollbar bg-slate-950/30 shrink-0">
-                        <button onclick="quickAsk(T('q_flood'))" class="bg-white/5 hover:bg-cyan-500/10 hover:text-cyan-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-white/5 whitespace-nowrap transition shrink-0">🌊 <span id="qb-flood">Flood</span></button>
-                        <button onclick="quickAsk(T('q_fire'))" class="bg-white/5 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-white/5 whitespace-nowrap transition shrink-0">🔥 <span id="qb-fire">Fire</span></button>
-                        <button onclick="quickAsk(T('q_kit'))" class="bg-white/5 hover:bg-amber-500/10 hover:text-amber-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-white/5 whitespace-nowrap transition shrink-0">🎒 <span id="qb-kit">Emergency Kit</span></button>
+                    <div class="px-4 py-2 border-t border-slate-800 flex gap-2 overflow-x-auto no-scrollbar bg-slate-900/30 shrink-0">
+                        <button onclick="quickAsk(T('q_flood'))" class="bg-slate-800 hover:bg-sky-500/10 hover:text-sky-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🌊 <span id="qb-flood">Flood</span></button>
+                        <button onclick="quickAsk(T('q_fire'))" class="bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🔥 <span id="qb-fire">Fire</span></button>
+                        <button onclick="quickAsk(T('q_kit'))" class="bg-slate-800 hover:bg-amber-500/10 hover:text-amber-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🎒 <span id="qb-kit">Emergency Kit</span></button>
                     </div>
                     <!-- Input -->
-                    <div class="p-3 border-t border-white/5 bg-slate-950/30 flex gap-2">
-                        <input type="text" id="chat-input" onkeydown="if(event.key==='Enter') sendMsg()" class="flex-1 bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-cyan-500/50 transition font-medium" placeholder="Ask in any language...">
-                        <button onclick="sendMsg()" class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition shadow-lg shadow-cyan-500/25">
+                    <div class="p-3 border-t border-slate-800 bg-slate-900/30 flex gap-2">
+                        <input type="text" id="chat-input" onkeydown="if(event.key==='Enter') sendMsg()" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-sky-500/50 transition font-medium" placeholder="Ask in any language...">
+                        <button onclick="sendMsg()" class="bg-blue-600 hover:bg-blue-700 text-white w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition shadow-md">
                             <i data-lucide="send" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -410,17 +387,17 @@
             <div class="lg:col-span-7 space-y-4">
                 <div class="flex justify-between items-center flex-wrap gap-2">
                     <h3 class="text-sm font-bold heading-font text-white flex items-center gap-2">
-                        <i data-lucide="newspaper" class="w-4 h-4 text-cyan-400"></i> <span id="news-section-title">Global Crisis Feed</span>
+                        <i data-lucide="newspaper" class="w-4 h-4 text-sky-400"></i> <span id="news-section-title">Global Crisis Feed</span>
                     </h3>
-                    <div class="flex items-center gap-1.5 bg-cyan-500/5 border border-cyan-500/20 rounded-full px-3 py-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span class="text-[9px] text-cyan-400 font-extrabold uppercase tracking-wider">LIVE CRYSIS RADAR</span>
+                    <div class="flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/25 rounded-full px-3 py-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                        <span class="text-[9px] text-sky-400 font-extrabold uppercase tracking-wider">LIVE CRISIS RADAR</span>
                     </div>
                 </div>
 
                 <!-- Topic Filters -->
                 <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 shrink-0 flex-wrap">
-                    <button onclick="filterNews('ALL')" id="filter-all" class="bg-cyan-500 text-slate-950 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full border border-cyan-500 shadow-lg shadow-cyan-500/25 whitespace-nowrap transition"><span id="filter-all-lbl">All</span></button>
+                    <button onclick="filterNews('ALL')" id="filter-all" class="bg-blue-600 text-white text-[10px] font-extrabold px-3.5 py-1.5 rounded-full border border-blue-600 shadow-sm whitespace-nowrap transition"><span id="filter-all-lbl">All</span></button>
                     <button onclick="filterNews('DISASTER')" id="filter-disaster" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/20">🌍 <span id="filter-disaster-lbl">Natural Disasters</span></button>
                     <button onclick="filterNews('WAR')" id="filter-war" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/20">⚔️ <span id="filter-war-lbl">War / Conflict</span></button>
                     <button onclick="filterNews('ECONOMY')" id="filter-economy" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-emerald-500/10 hover:text-emerald-400 hover:border-emerald-500/20">📈 <span id="filter-econ-lbl">Economy</span></button>
@@ -429,8 +406,8 @@
                 <!-- Country Search -->
                 <div class="flex gap-2">
                     <div class="relative flex-1">
-                        <input type="text" id="country-search" placeholder="Search country (e.g. Ukraine, France)..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-cyan-500/50 transition font-medium pr-10">
-                        <button onclick="applyCountryFilter()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-cyan-500 hover:bg-cyan-600 text-slate-950 px-2.5 py-1 rounded-lg text-[9px] font-extrabold tracking-wider transition">GO</button>
+                        <input type="text" id="country-search" placeholder="Search country (e.g. Ukraine, France)..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500/50 transition font-medium pr-10">
+                        <button onclick="applyCountryFilter()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg text-[9px] font-extrabold tracking-wider transition">GO</button>
                     </div>
                     <button onclick="clearCountryFilter()" class="bg-white/5 hover:bg-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1 border border-white/5">
                         <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -555,7 +532,7 @@
                 <!-- Category Distribution Charts -->
                 <div class="space-y-3">
                     <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-1.5" id="dash-t-dist">
-                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-cyan-400"></i> Infrastructure Damage Density Breakdown
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-sky-400"></i> Infrastructure Damage Density Breakdown
                     </h3>
                     <div id="dash-density-chart" class="bg-slate-950/30 border border-white/5 rounded-2xl p-5 space-y-3 font-semibold">
                         <!-- Populated dynamically -->
@@ -591,7 +568,7 @@
             <div class="p-6 space-y-4 overflow-y-auto max-h-[75vh]">
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-city">City / Location</label>
-                    <input type="text" id="in-city" placeholder="E.g. Kyiv, Paris, Ljubljana..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-cyan-500/50 transition font-medium">
+                    <input type="text" id="in-city" placeholder="E.g. Kyiv, Paris, Ljubljana..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
                     <div id="in-coords-container" class="grid grid-cols-2 gap-3 hidden mt-2">
                         <div><label class="block text-[9px] font-bold text-slate-400 uppercase mb-0.5">Latitude</label><input type="text" id="in-lat" readonly class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-500 font-mono outline-none"></div>
                         <div><label class="block text-[9px] font-bold text-slate-400 uppercase mb-0.5">Longitude</label><input type="text" id="in-lng" readonly class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-500 font-mono outline-none"></div>
@@ -600,7 +577,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-type">Incident Type</label>
-                        <select id="in-type" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-cyan-500/50 font-bold text-slate-300">
+                        <select id="in-type" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
                             <option value="ROADS" id="opt-roads">🚗 Roads & Bridges</option>
                             <option value="HOSPITALS" id="opt-hospitals">🏥 Hospitals & Healthcare</option>
                             <option value="SCHOOLS" id="opt-schools">🏫 Schools & Education</option>
@@ -614,7 +591,7 @@
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-severity">Severity</label>
-                        <select id="in-severity" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-cyan-500/50 font-bold text-slate-300">
+                        <select id="in-severity" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
                             <option value="CRITICAL">🔴 Critical</option>
                             <option value="MEDIUM" selected>🟡 Medium</option>
                             <option value="LOW">🔵 Low</option>
@@ -623,17 +600,17 @@
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-photo">Photo (Optional)</label>
-                    <input type="file" id="in-photo" accept="image/*" class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[9px] file:font-bold file:bg-cyan-500/10 file:text-cyan-400 hover:file:bg-cyan-500/20">
+                    <input type="file" id="in-photo" accept="image/*" class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[9px] file:font-bold file:bg-blue-500/10 file:text-blue-400 hover:file:bg-blue-500/20">
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-desc">Description</label>
-                    <textarea id="in-desc" rows="3" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-cyan-500/50 transition font-medium leading-relaxed" placeholder="Describe the situation in detail..."></textarea>
+                    <textarea id="in-desc" rows="3" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium leading-relaxed" placeholder="Describe the situation in detail..."></textarea>
                 </div>
                 <div class="flex items-center gap-2.5 text-[10px] text-slate-500 bg-white/5 p-3 rounded-xl border border-white/5" id="report-privacy-container">
                     <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500 shrink-0"></i>
                     <span id="report-privacy-text">🔒 Privacy Protected: No personal information is collected. All data transfers are securely encrypted.</span>
                 </div>
-                <button onclick="submitReport()" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-lg shadow-rose-600/20 transition flex items-center justify-center gap-2">
+                <button onclick="submitReport()" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i> <span id="btn-submit-report">SUBMIT TO MAP</span>
                 </button>
             </div>
@@ -648,7 +625,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
                 <button onclick="closeFSModal('analysis-modal')" class="absolute top-4 right-4 text-white bg-slate-950/70 hover:bg-slate-950 border border-white/10 text-xs px-3.5 py-1.5 rounded-xl font-bold transition">✕ Close</button>
                 <p id="viewer-location" class="absolute bottom-4 left-5 text-white text-sm font-bold"></p>
-                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-cyan-500 shadow-md"></span>
+                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-blue-600 shadow-md"></span>
             </div>
             <div class="p-6 overflow-y-auto space-y-4">
                 <div id="viewer-desc" class="text-xs text-slate-300 leading-relaxed prose prose-invert prose-xs max-w-none"></div>
@@ -657,7 +634,7 @@
                     <p id="viewer-safety-text" class="text-xs text-amber-300/80 leading-relaxed"></p>
                 </div>
                 <div class="flex gap-3">
-                    <button id="viewer-ai-btn" class="flex-1 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-600 hover:to-indigo-700 text-slate-950 font-bold py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20">
+                    <button id="viewer-ai-btn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
                         <i data-lucide="sparkles" class="w-4 h-4"></i> <span id="viewer-ai-btn-lbl">AI Report Analysis</span>
                     </button>
                     <button id="viewer-map-btn" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-3.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 border border-white/5">
@@ -855,41 +832,47 @@
             link: 'https://news.google.com/rss/search?q=ukraine+conflict&hl=en&gl=US',
             lat: 49.0, lng: 31.5, country: 'ukraine', date: 'LIVE', img: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&h=400&q=80',
             severity: 'CRITICAL', verified: true,
-            analysis: '**Category:** Geopolitical Conflict / Warfare\n\n**Coordinates:** 49.0° N, 31.5° E\n\n---\n\nActive military operations continue across Eastern Ukraine. Air sirens triggered in multiple zones. Emergency humanitarian shelters are fully operational in western regions.'
+            analysis: 'Active military operations continue across Eastern and Northern Ukraine with intensive artillery deployments. Local security agencies report escalating tactical engagements near Kharkiv and Donbas. The threat level remains critical, prompting authorities to advise civilians to seek immediate shelter. High-altitude reconnaissance drones have been detected surveying regional logistics corridors. Key railway segments have suffered partial damage, halting direct freight transport to the center. Civil protection units are actively redirecting civilian travel to western detour routes. Emergency shelters have been established in municipal gyms and public halls. Local volunteer brigades are distributing food, medicine, and bottled water to families. Mobile network towers have been disrupted, leading to a communications blackout in eastern suburbs. Civil defense authorities urge all remaining citizens to strictly comply with local curfew regulations.'
         },
         {
             id: 'BOOTSTRAP_2', type: 'WAR', source: 'Middle East Radar',
             title: 'Middle East Conflict: High Security Surveillance in Gaza Strip',
             desc: 'Severe military engagements and air raid alerts across coastal regions. International organizations and logistical units active in humanitarian aid transport corridors.',
             link: 'https://news.google.com/rss/search?q=gaza+conflict&hl=en&gl=US',
-            lat: 31.4, lng: 34.5, country: 'palestine', date: 'LIVE', img: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&h=400&q=80',
+            lat: 31.4, lng: 34.5, country: 'palestine', date: 'LIVE', img: 'https://images.unsplash.com/photo-1593978301851-40c1849d47d4?auto=format&fit=crop&w=600&h=400&q=80',
             severity: 'CRITICAL', verified: true,
-            analysis: '**Category:** Regional Conflict & Security Alert\n\n**Coordinates:** 31.4° N, 34.5° E\n\n---\n\nHeavy military deployment and logistics monitoring in the southern Gaza Strip. International aid agencies coordinate vital water and medical supplies under intense security protocols.'
+            analysis: 'Intense security alerts and military activity persist across the Gaza Strip and coastal borders. Coastal areas are experiencing ongoing naval surveillance and heavy military maneuvers. Major arterial roads have been heavily cratered, blocking standard cargo truck access to local warehouses. International humanitarian relief groups have established temporary coordination hubs near the southern crossing. Emergency dispatch centers report severe power grid outages affecting local municipal water pumps. Clean water trucks are operating under tight security protocols to prevent resource hoarding at dispatch points. United Nations logistics teams are coordinating with local authorities to declare safe transit hours for aid convoys. Ground debris from collapsed structural concrete is currently blocking key emergency lane access. Field hospitals are operating at maximum capacity, reporting severe shortages in critical anesthetics and medical supplies. Mobile water treatment plants are being deployed to mitigate rising public health risks in civilian camps.'
         },
         {
             id: 'BOOTSTRAP_3', type: 'DISASTER', source: 'USGS Seismology',
             title: 'Tectonic Activity: Strong M6.1 Earthquake detected off Honshu Coast, Japan',
             desc: 'Sub-oceanic seismic event coordinates verified by seismological agencies. Initial tsunami monitoring active; coastal alerts issued for Honshu region.',
             link: 'https://www.gdacs.org/xml/rss.xml',
-            lat: 36.2, lng: 138.3, country: 'japan', date: 'RECENT', img: 'https://images.unsplash.com/photo-1600697395593-e9dc66797b43?auto=format&fit=crop&w=600&h=400&q=80',
+            lat: 36.2, lng: 138.3, country: 'japan', date: 'RECENT', img: 'https://images.unsplash.com/photo-1594897030264-ab7d87efc473?auto=format&fit=crop&w=600&h=400&q=80',
             severity: 'MEDIUM', verified: true,
-            analysis: '**Category:** Seismic / Natural Disaster\n\n**Magnitude:** 6.1 Richter Scale\n\n---\n\nA strong tectonic release registered off eastern Honshu. Nuclear infrastructure remains stable; high-speed Shinkansen trains halted momentarily under auto-safety triggers.'
+            analysis: 'Seismologists have registered a powerful magnitude 6.1 sub-oceanic earthquake off the coast of Honshu, Japan. The seismic event triggered automatic sensor warnings across northern and eastern prefectures. Initial tsunami warnings were broadcasted across coastal defense networks immediately following the tectonic rupture. High-speed Shinkansen trains were automatically brought to a controlled halt using emergency safety braking systems. Structural inspectors are currently evaluating nuclear power plants, which report no containment damage or coolant leaks. Municipal officials have opened temporary evacuation shelters in local high school gymnasiums. Localized power outages have affected approximately twelve thousand suburban residences in the prefecture. Gas lines have been shut down automatically in residential areas to prevent secondary fire outbreaks. Small landslides have blocked rural highways in mountainous areas of Nagano prefecture. Public safety authorities advise residents to remain vigilant for strong aftershocks over the next forty-eight hours.'
         },
         {
             id: 'BOOTSTRAP_4', type: 'ECONOMY', source: 'Eurostat Financial',
-            title: 'Germany Industrial Recession Indicators & Energy Crisis Tensions',
+            title: 'Germany Industrial Recession Indicators & Energy Grid Tensions',
             desc: 'Industrial manufacturing index registers contraction due to inflation pressure and gas import costs. Financial adjustments active across energy-heavy corporations.',
             link: 'https://news.google.com/rss/search?q=germany+economic+crisis&hl=en&gl=US',
-            lat: 51.2, lng: 10.0, country: 'germany', date: 'RECENT', img: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&h=400&q=80',
+            lat: 51.2, lng: 10.0, country: 'germany', date: 'RECENT', img: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&h=400&q=80',
             severity: 'LOW', verified: true,
-            analysis: '**Category:** Macroeconomic / Energy Crisis\n\n**Country:** Germany\n\n---\n\nIndustrial output contracted by 1.8% over the quarter. Government introduces temporary energy subsidy extensions for heavy chemical and automotive sectors.'
+            analysis: 'German manufacturing sectors are reporting a significant contraction in industrial output this quarter. Tensions surrounding natural gas import tariffs continue to weigh heavily on chemical production lines. Macroeconomic analysts warn of a prolonged technical recession if energy costs remain elevated. Major automotive manufacturers are considering temporary production suspensions to optimize operational costs. The federal government has introduced a temporary utility subsidy package to assist heavy industrial plants. Financial institutions have adjusted interest rates, prompting warnings from regional business syndicates. Heavy machinery exports have declined by three point five percent compared to the previous quarter. Supply chain bottlenecks for critical semiconductor imports are further stalling logistics terminals at northern ports. Energy grid operators are importing additional wind power from northern maritime networks to stabilize distribution. Labor unions are calling for urgent wage adjustments to offset inflation in household utility costs.'
         },
         {
             id: 'BOOTSTRAP_5', type: 'DISASTER', source: 'Copernicus Sentinel',
             title: 'Slovenia River Floods: Reconstruction & Climate Prevention Initiatives',
             desc: 'Post-disaster engineering works fully active in Savinja Valley to reconstruct riverbeds and prevent potential flash flood scenarios ahead of seasonal rains.',
             link: 'https://www.gdacs.org/xml/rss.xml',
-            lat: 46.1, lng: 14.8, country: 'slovenia', date: 'MONITORING', img: 'https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=    const TRANSLATIONS = {
+            lat: 46.1, lng: 14.8, country: 'slovenia', date: 'MONITORING', img: 'https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=600&h=400&q=80',
+            severity: 'MEDIUM', verified: true,
+            analysis: 'Slovenia\'s civil protection units are maintaining active monitoring along the Savinja Valley river basin. Reconstructive riverbed engineering works are being carried out following the devastating seasonal flash floods. Construction teams are reinforcing gravel retention dams to buffer high-velocity water flows. Local municipalities are repairing secondary asphalt roads that were eroded by overflowing rivers. Geological surveyors are mapping active landslide risks along steep residential slopes in the alpine regions. Temporary pontoon bridges are supporting local passenger traffic while main concrete spans are rebuilt. The national hydrological agency has deployed advanced sonar sensors to track water level rises in real time. Volunteers are coordinating local cleanups of debris left behind by high floodwaters. Drinking water facilities are undergoing strict chlorination checks to ensure community health safety. Weather forecasts predict additional heavy rainfall, prompting flood warnings across central regions.'
+        }
+    ];
+
+    const TRANSLATIONS = {
         sl: {
             'h-world': 'Svet', 'h-portal': 'Krizni Portal', 'h-subtitle': 'Globalno krizno kartiranje v realnem času',
             'btn-myloc': 'Moja Lokacija', 'btn-cams': 'Kamere v Živo', 'btn-report': 'Prijavi Težavo',
@@ -920,6 +903,7 @@
             'call-cancel': 'Prekliči', 'call-confirm': 'Pokliči zdaj',
             'locating-gps': '📍 Pridobivanje GPS lokacije...', 'gps-fixed': '📍 GPS lokacija potrjena: ', 'gps-error': '⚠️ Napaka GPS. Omogočite lokacijske storitve v brskalniku.',
             'volunteer-success': '🤝 Registrirani ste kot prostovoljec na zemljevidu!', 'fill-fields': 'Prosimo, izpolnite vsa zahtevana polja.',
+            'btn-vol-lbl': '🤝 Registracija Prostovoljca',
             'loc-not-found': 'Lokacije ni mogoče najti. Prosimo, vnesite koordinate ročno.', 'geocode-error': 'Napaka pri geokodiranju.', 'cant-get-loc': 'Ni mogoče pridobiti lokacije.',
             'btn-dash-lbl': 'Nadzorna Plošča',
             'dash-title': 'Nadzorna Plošča za Reševalce & Analitiko',
@@ -979,6 +963,7 @@
             'call-cancel': 'Cancel', 'call-confirm': 'Call Now',
             'locating-gps': '📍 Locating GPS...', 'gps-fixed': '📍 GPS Fixed: ', 'gps-error': '⚠️ GPS error. Enable location in browser settings.',
             'volunteer-success': '🤝 You are registered as a volunteer on the map!', 'fill-fields': 'Please fill in all required fields.',
+            'btn-vol-lbl': '🤝 Register as Volunteer',
             'loc-not-found': 'Location not found. Please enter coordinates manually.', 'geocode-error': 'Geocoding error.', 'cant-get-loc': 'Could not get location.',
             'btn-dash-lbl': 'Dashboard',
             'dash-title': 'Crisis Responder & Analytics Dashboard',
@@ -1038,6 +1023,7 @@
             'call-cancel': 'Annulla', 'call-confirm': 'Chiama ora',
             'locating-gps': '📍 Rilevamento GPS...', 'gps-fixed': '📍 GPS Rilevato: ', 'gps-error': '⚠️ Errore GPS. Abilita la geolocalizzazione nel browser.',
             'volunteer-success': '🤝 Ti sei registrato come volontario sulla mappa!', 'fill-fields': 'Si prega di compilare tutti i campi richiesti.',
+            'btn-vol-lbl': '🤝 Registrati come Volontario',
             'loc-not-found': 'Posizione non trovata. Inserisci le coordinate manualmente.', 'geocode-error': 'Errore di geocodifica.', 'cant-get-loc': 'Impossibile ottenere la posizione.',
             'btn-dash-lbl': 'Cruscotto',
             'dash-title': 'Cruscotto Soccorritori e Analitica',
@@ -1097,6 +1083,7 @@
             'call-cancel': 'Annuler', 'call-confirm': 'Appeler',
             'locating-gps': '📍 Localisation GPS...', 'gps-fixed': '📍 GPS Confirmé: ', 'gps-error': '⚠️ Erreur GPS. Activez la géolocalisation dans le navigateur.',
             'volunteer-success': '🤝 Vous êtes enregistré en tant que bénévole sur la carte!', 'fill-fields': 'Veuillez remplir tous les champs obligatoires.',
+            'btn-vol-lbl': '🤝 S\'inscrire comme Bénévole',
             'loc-not-found': 'Localisation non trouvée. Veuillez entrer les coordonnées manuellement.', 'geocode-error': 'Erreur de geocodage.', 'cant-get-loc': 'Impossible d\'obtenir la localisation.',
             'btn-dash-lbl': 'Tableau de bord',
             'dash-title': 'Tableau de Bord des Secouristes & Analytique',
@@ -1315,7 +1302,7 @@
         const labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 20, pane: 'markerPane' });
         const terrainMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 });
 
-        darkMap.addTo(map);
+        L.layerGroup([satellite, labels]).addTo(map);
 
         // Advanced GIS Layers
         const railway = L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', { maxZoom: 19 });
@@ -1467,7 +1454,7 @@
 
     async function loadNews() {
         const feed = document.getElementById('news-feed');
-        feed.innerHTML = `<div class="text-center py-12"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400 mx-auto mb-3"></div><p class="text-xs text-slate-400 font-medium">${T('loading-news')}</p></div>`;
+        feed.innerHTML = `<div class="text-center py-12"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-3"></div><p class="text-xs text-slate-400 font-medium">${T('loading-news')}</p></div>`;
 
         // Prepopulate with Bootstrap fallback array so the map is instantly working and full of symbols!
         let allItems = [...REAL_FALLBACK_REPORTS];
@@ -1536,7 +1523,7 @@
             const btn = document.getElementById(buttons[k]);
             if (!btn) return;
             if (k === currentFilter) {
-                btn.className = 'bg-cyan-500 text-slate-950 text-[10px] font-extrabold px-4 py-1.5 rounded-full border border-cyan-500 shadow-lg shadow-cyan-500/25 whitespace-nowrap transition';
+                btn.className = 'bg-blue-600 text-white text-[10px] font-extrabold px-4 py-1.5 rounded-full border border-blue-600 shadow-sm whitespace-nowrap transition';
             } else {
                 let hover = 'hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/20';
                 if (k === 'WAR') hover = 'hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/20';
@@ -1592,7 +1579,7 @@
             if (r.severity === 'LOW') severityBadge = '<span class="text-[8px] font-extrabold px-1.5 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-md">🔵 LOW</span>';
 
             const card = document.createElement('div');
-            card.className = 'glass-panel rounded-2xl p-4 flex gap-4 transition duration-300 hover:scale-[1.01] hover:border-cyan-500/30 hover:bg-white/[0.04] cursor-pointer';
+            card.className = 'glass-panel rounded-2xl p-4 flex gap-4 transition duration-300 hover:scale-[1.01] hover:border-blue-500/30 hover:bg-white/[0.04] cursor-pointer';
             card.onclick = () => openAnalysis(r);
             card.innerHTML = `
                 <img src="${r.img}" class="w-24 h-24 rounded-xl object-cover shrink-0 border border-white/5" alt="${r.type}" onerror="this.src='${imgTags['INFO']}'">
@@ -1607,11 +1594,11 @@
                             </div>
                             <span class="text-[9px] text-slate-400 font-bold shrink-0">${r.date}</span>
                         </div>
-                        <h4 class="text-xs sm:text-sm font-bold text-slate-100 leading-snug hover:text-cyan-400 transition line-clamp-2">${r.title}</h4>
+                        <h4 class="text-xs sm:text-sm font-bold text-slate-100 leading-snug hover:text-blue-400 transition line-clamp-2">${r.title}</h4>
                         <p class="text-[10px] sm:text-xs text-slate-400 font-medium line-clamp-2 mt-1 leading-relaxed">${r.desc}</p>
                     </div>
                     <div class="flex justify-end mt-2">
-                        <span class="text-[9px] text-cyan-400 font-extrabold tracking-wider flex items-center gap-1">ANALYSIS →</span>
+                        <span class="text-[9px] text-blue-400 font-extrabold tracking-wider flex items-center gap-1">ANALYSIS →</span>
                     </div>
                 </div>
             `;
@@ -1866,20 +1853,20 @@
         wrapper.className = `flex items-start gap-3 max-w-[85%] ${self ? 'ml-auto justify-end flex-row-reverse' : ''}`;
 
         let bgClass = 'bg-white/5 border border-white/5 text-slate-200 shadow-md';
-        let avatarBg = 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/25', avatarText = 'AI';
-        if (self) { bgClass = 'bg-cyan-500 text-slate-950 font-medium shadow-lg shadow-cyan-500/15'; avatarBg = 'bg-slate-900 text-slate-100 border border-white/10'; avatarText = 'ME'; }
+        let avatarBg = 'bg-blue-500/10 text-blue-400 border border-blue-500/25', avatarText = 'AI';
+        if (self) { bgClass = 'bg-blue-600 text-white font-medium shadow-md'; avatarBg = 'bg-slate-800 text-slate-100 border border-slate-700'; avatarText = 'ME'; }
         if (sender === 'SYS') { bgClass = 'bg-amber-500/10 border border-amber-500/20 text-amber-300'; avatarBg = 'bg-amber-500 text-slate-950'; avatarText = '!'; }
 
         let ttsButton = '';
         if (!self && !isTyping && sender === 'AI') {
             const enc = encodeURIComponent(text);
-            ttsButton = `<button onclick="speakText(decodeURIComponent('${enc}'))" class="mt-2.5 text-[9px] bg-white/5 hover:bg-cyan-500/10 border border-white/5 hover:border-cyan-500/30 text-cyan-400 px-2 py-1 rounded-md font-bold transition flex items-center gap-1 shadow-sm"><i data-lucide="volume-2" class="w-3 h-3"></i> Poslušaj / Listen</button>`;
+            ttsButton = `<button onclick="speakText(decodeURIComponent('${enc}'))" class="mt-2.5 text-[9px] bg-slate-800 hover:bg-blue-500/10 border border-slate-700 hover:border-blue-500/30 text-blue-400 px-2 py-1 rounded-md font-bold transition flex items-center gap-1 shadow-sm"><i data-lucide="volume-2" class="w-3 h-3"></i> Poslušaj / Listen</button>`;
         }
 
         wrapper.innerHTML = `
             <div class="w-8 h-8 rounded-xl ${avatarBg} flex items-center justify-center text-xs font-bold shrink-0 shadow-sm">${avatarText}</div>
             <div class="${bgClass} p-3.5 rounded-2xl ${self ? 'rounded-tr-sm' : 'rounded-tl-sm'} text-xs leading-relaxed max-w-full">
-                ${isTyping ? '<div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:0.4s]"></span></div>' : marked.parse(text)}
+                ${isTyping ? '<div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:0.4s]"></span></div>' : marked.parse(text)}
                 ${ttsButton}
             </div>
         `;
@@ -1915,7 +1902,7 @@
         document.getElementById(tabId).classList.remove('hidden');
         document.querySelectorAll('[id^="btn-tab-"]').forEach(btn => btn.className = 'flex-1 pb-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition');
         const activeBtn = document.getElementById('btn-' + tabId);
-        if (tabId === 'tab-flood') activeBtn.className = 'flex-1 pb-2 border-b-2 border-cyan-500 text-cyan-400 transition font-bold';
+        if (tabId === 'tab-flood') activeBtn.className = 'flex-1 pb-2 border-b-2 border-sky-500 text-sky-400 transition font-bold';
         else if (tabId === 'tab-fire') activeBtn.className = 'flex-1 pb-2 border-b-2 border-rose-500 text-rose-400 transition font-bold';
         else activeBtn.className = 'flex-1 pb-2 border-b-2 border-purple-500 text-purple-400 transition font-bold';
     }
@@ -1951,26 +1938,39 @@
 
     function openCameras() {
         const container = document.getElementById('camera-feed-container');
-        const cameras = [
-            { loc: 'A1 (Ljubljana – Maribor) / Vransko', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Avtocesta_A1_%28Slovenija%29.jpg/800px-Avtocesta_A1_%28Slovenija%29.jpg' },
-            { loc: 'A2 (Ljubljana – Kranj) / Šentvid', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/A2_motorway%2C_Slovenia_%28viaduct%29.jpg/800px-A2_motorway%2C_Slovenia_%28viaduct%29.jpg' },
-            { loc: 'A1 (Ljubljana – Koper) / Vrhnika', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/A1_highway_in_Slovenia.jpg/800px-A1_highway_in_Slovenia.jpg' },
-            { loc: 'Ljubljana (Severna obvoznica)', url: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/A1_Vodole.JPG' },
-            { loc: 'Maribor (Tabor)', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Avtocesta_A1_%28Slovenija%29.jpg/800px-Avtocesta_A1_%28Slovenija%29.jpg' },
-            { loc: 'H4 (Razdrto – Vrtojba)', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/A2_motorway%2C_Slovenia_%28viaduct%29.jpg/800px-A2_motorway%2C_Slovenia_%28viaduct%29.jpg' }
-        ];
         const now = new Date();
-        container.innerHTML = cameras.map((c, i) => `
-            <div class="glass-panel rounded-2xl overflow-hidden shadow-md border border-white/5">
-                <div class="relative">
-                    <span class="absolute top-2 left-2 bg-emerald-500 text-emerald-950 text-[9px] font-black px-2 py-0.5 rounded flex items-center gap-1 z-10"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> LIVE</span>
-                    <img src="${c.url}" class="w-full h-36 object-cover" alt="${c.loc}" onerror="this.style.display='none'">
-                </div>
-                <div class="p-3 bg-slate-950 text-[9px] text-emerald-400 font-mono">
-                    <span class="font-bold text-white block">CAM_${String(i+1).padStart(2,'0')} // ${c.loc}</span>
-                    <span class="text-slate-500">${now.toLocaleString()}</span>
-                </div>
-            </div>`).join('');
+        const t = now.getTime();
+        
+        const feeds = [
+            { type: 'youtube', loc: 'Tokyo (Shibuya Crossing) - LIVE Video', id: 'n42z42B0iIE' },
+            { type: 'youtube', loc: 'New York (Times Square) - LIVE Video', id: 'AdVkMC_1Coo' },
+            { type: 'youtube', loc: 'Venice (Grand Canal) - LIVE Video', id: '5_XED-p6v5Y' },
+            { type: 'image', loc: 'A1 Highway (Ljubljana - Golovec) - Real-time Cam', url: `https://www.promet.si/kamere/dars/Golovec.jpg?t=${t}` },
+            { type: 'image', loc: 'A1 Highway (Vransko) - Real-time Cam', url: `https://www.promet.si/kamere/dars/Vransko.jpg?t=${t}` },
+            { type: 'image', loc: 'A1 Highway (Postojna) - Real-time Cam', url: `https://www.promet.si/kamere/dars/Postojna.jpg?t=${t}` }
+        ];
+
+        container.innerHTML = feeds.map((feed, i) => {
+            let mediaHtml = '';
+            if (feed.type === 'youtube') {
+                mediaHtml = `<iframe class="w-full h-36 rounded-t-xl" src="https://www.youtube.com/embed/${feed.id}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                mediaHtml = `<img src="${feed.url}" class="w-full h-36 object-cover rounded-t-xl" alt="${feed.loc}" onerror="this.src='https://images.unsplash.com/photo-1594897030264-ab7d87efc473?auto=format&fit=crop&w=600&h=400&q=80'">`;
+            }
+
+            return `
+                <div class="glass-panel rounded-2xl overflow-hidden shadow-md border border-slate-700 flex flex-col">
+                    <div class="relative shrink-0">
+                        <span class="absolute top-2 left-2 bg-rose-600 text-white text-[8px] font-black px-2 py-0.5 rounded flex items-center gap-1 z-10"><span class="w-1 h-1 rounded-full bg-white animate-ping"></span> LIVE FEED</span>
+                        ${mediaHtml}
+                    </div>
+                    <div class="p-3 bg-slate-900 text-[9px] text-sky-400 font-mono mt-auto border-t border-slate-800">
+                        <span class="font-bold text-white block">FEED_${String(i+1).padStart(2,'0')} // ${feed.loc}</span>
+                        <span class="text-slate-500">${now.toLocaleString()}</span>
+                    </div>
+                </div>`;
+        }).join('');
+
         document.getElementById('camera-modal').classList.remove('hidden');
         document.getElementById('camera-modal').style.display = 'flex';
     }
@@ -2212,7 +2212,7 @@
             'ROADS': { label: T('opt-roads') || 'Roads & Bridges', color: 'from-amber-400 to-amber-600' },
             'HOSPITALS': { label: T('opt-hospitals') || 'Hospitals', color: 'from-purple-500 to-purple-700' },
             'SCHOOLS': { label: T('opt-schools') || 'Schools', color: 'from-indigo-500 to-indigo-700' },
-            'UTILITIES': { label: T('opt-utilities') || 'Power/Water Grid', color: 'from-cyan-400 to-blue-600' },
+            'UTILITIES': { label: T('opt-utilities') || 'Power/Water Grid', color: 'from-sky-400 to-blue-600' },
             'RESIDENTIAL': { label: T('opt-residential') || 'Residential Buildings', color: 'from-blue-500 to-blue-700' },
             'PUBLIC': { label: T('opt-public') || 'Public Buildings', color: 'from-emerald-500 to-emerald-700' },
             'DISASTER': { label: T('opt-disaster') || 'Natural Disasters', color: 'from-orange-500 to-orange-700' },
