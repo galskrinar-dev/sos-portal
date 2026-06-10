@@ -18,18 +18,18 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #09090b; color: white; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #18181b; overflow-x: hidden; }
         .heading-font { font-family: 'Outfit', sans-serif; }
         .bg-pattern {
             position: absolute; inset: 0;
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.02) 1px, transparent 0);
             background-size: 32px 32px; z-index: -1;
         }
         .pulse-ring {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 300px; height: 300px; border-radius: 50%;
-            background: rgba(249, 115, 22, 0.08);
+            background: rgba(249, 115, 22, 0.05);
             animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; z-index: -1;
         }
         @keyframes pulse-ring {
@@ -44,76 +44,76 @@
     <div class="bg-pattern"></div>
     <div class="pulse-ring"></div>
     <div class="pulse-ring" style="animation-delay: 1.5s;"></div>
-
-    <main class="max-w-md w-full bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/50 rounded-[2.5rem] p-8 text-center shadow-2xl relative z-10 overflow-hidden">
+ 
+    <main class="max-w-md w-full bg-white border border-zinc-200 rounded-[2.5rem] p-8 text-center shadow-lg relative z-10 overflow-hidden">
         
-        <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-orange-500/30">
+        <div class="w-24 h-24 bg-gradient-to-br from-orange-500 to-orange-700 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-orange-500/20">
             <i data-lucide="shield-alert" class="w-12 h-12 text-white"></i>
         </div>
-
+ 
         <div class="mb-8">
-            <h1 class="text-3xl font-black heading-font tracking-tight mb-2">SOS Slovenija</h1>
-            <p class="text-sm text-slate-400 font-medium">Nacionalni portal za krizno kartiranje, obveščanje in reševalna navodila (Offline-ready).</p>
+            <h1 class="text-3xl font-black heading-font tracking-tight mb-2 text-zinc-900">SOS Slovenija</h1>
+            <p class="text-sm text-zinc-500 font-medium">Nacionalni portal za krizno kartiranje, obveščanje in reševalna navodila (Offline-ready).</p>
         </div>
-
+ 
         <div class="space-y-3 mb-8 text-left">
-            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-zinc-950/50 p-3 rounded-xl border border-white/5">
-                <i data-lucide="wifi-off" class="w-5 h-5 text-orange-400 shrink-0"></i>
+            <div class="flex items-center gap-3 text-sm font-medium text-zinc-700 bg-zinc-50 p-3 rounded-xl border border-zinc-200">
+                <i data-lucide="wifi-off" class="w-5 h-5 text-orange-500 shrink-0"></i>
                 Deluje tudi brez internetne povezave
             </div>
-            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-slate-900/50 p-3 rounded-xl">
-                <i data-lucide="bot" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+            <div class="flex items-center gap-3 text-sm font-medium text-zinc-700 bg-zinc-50 p-3 rounded-xl border border-zinc-200">
+                <i data-lucide="bot" class="w-5 h-5 text-orange-500 shrink-0"></i>
                 Vgrajen pametni AI govorni asistent
             </div>
-            <div class="flex items-center gap-3 text-sm font-medium text-slate-300 bg-zinc-950/50 p-3 rounded-xl border border-white/5">
-                <i data-lucide="siren" class="w-5 h-5 text-orange-400 shrink-0"></i>
+            <div class="flex items-center gap-3 text-sm font-medium text-zinc-700 bg-zinc-50 p-3 rounded-xl border border-zinc-200">
+                <i data-lucide="siren" class="w-5 h-5 text-orange-500 shrink-0"></i>
                 SOS Panik Gumb za 112 povezavo
             </div>
         </div>
-
+ 
         <div class="flex flex-col gap-3">
             <!-- Android/Desktop Chrome: Auto-shows when PWA criteria met -->
-            <button id="install-btn" class="hidden w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-orange-500/20 items-center justify-center gap-2">
+            <button id="install-btn" class="hidden w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-md items-center justify-center gap-2">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 NAMESTI NA TELEFON (Android)
             </button>
-
+ 
             <!-- iOS Safari: Always show with instructions -->
-            <button id="ios-btn" onclick="document.getElementById('ios-hint').style.display='block'" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2">
+            <button id="ios-btn" onclick="document.getElementById('ios-hint').style.display='block'" class="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-2xl text-sm transition shadow-md flex items-center justify-center gap-2">
                 <i data-lucide="download" class="w-5 h-5"></i>
                 NAMESTI NA TELEFON
             </button>
-
+ 
             <!-- iOS Step-by-step hint -->
-            <div id="ios-hint" class="bg-zinc-950 border border-orange-500/30 rounded-2xl p-4 text-left text-xs text-slate-300 space-y-2">
-                <p class="font-bold text-orange-400 text-sm mb-3">📱 Navodila za namestitev:</p>
+            <div id="ios-hint" class="bg-zinc-50 border border-orange-200 rounded-2xl p-4 text-left text-xs text-zinc-700 space-y-2">
+                <p class="font-bold text-orange-600 text-sm mb-3">📱 Navodila za namestitev:</p>
                 <div class="space-y-2">
-                    <p><span class="text-white font-bold">Android Chrome:</span> Kliknite ⋮ (meni) → "Dodaj na začetni zaslon"</p>
-                    <p><span class="text-white font-bold">iPhone Safari:</span> Kliknite <span class="bg-slate-700 px-1 rounded">⬆️ Deli</span> → "Dodaj na začetni zaslon"</p>
-                    <p><span class="text-white font-bold">Windows Chrome:</span> Kliknite <span class="bg-slate-700 px-1 rounded">⊕</span> v naslovni vrstici</p>
+                    <p><span class="text-zinc-900 font-bold">Android Chrome:</span> Kliknite ⋮ (meni) → "Dodaj na začetni zaslon"</p>
+                    <p><span class="text-zinc-900 font-bold">iPhone Safari:</span> Kliknite <span class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-800">⬆️ Deli</span> → "Dodaj na začetni zaslon"</p>
+                    <p><span class="text-zinc-900 font-bold">Windows Chrome:</span> Kliknite <span class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-800">⊕</span> v naslovni vrstici</p>
                 </div>
-                <button onclick="document.getElementById('ios-hint').style.display='none'" class="mt-2 text-slate-500 hover:text-white text-xs">Zapri</button>
+                <button onclick="document.getElementById('ios-hint').style.display='none'" class="mt-2 text-zinc-500 hover:text-zinc-800 text-xs font-semibold">Zapri</button>
             </div>
             
-            <a href="resevalec.html" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-4 rounded-2xl text-sm transition flex items-center justify-center gap-2 border border-zinc-700/30">
-                ODPRI KOT SPLETNI PORTAL <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <a href="resevalec.html" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold py-4 rounded-2xl text-sm transition flex items-center justify-center gap-2 border border-zinc-200">
+                ODPRI KOT SPLETNI PORTAL <i data-lucide="arrow-right" class="w-4 h-4 text-orange-500"></i>
             </a>
         </div>
         
     </main>
-
+ 
     <!-- QR KODA ZA DELJENJE -->
-    <div class="mt-6 bg-zinc-900/60 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-6 max-w-md w-full text-center z-10 relative">
-        <p class="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-4">📲 Skeniraj za hiter dostop</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://galskrinar-dev.github.io/sos-portal/resevalec.html&bgcolor=09090b&color=ffffff&margin=2" 
-             class="mx-auto rounded-xl" alt="QR Koda SOS Portal" width="160" height="160">
-        <p class="text-[11px] text-slate-500 mt-3 font-mono">galskrinar-dev.github.io/sos-portal</p>
-        <button onclick="shareApp()" class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2">
+    <div class="mt-6 bg-white border border-zinc-200 rounded-3xl p-6 max-w-md w-full text-center z-10 relative shadow-sm">
+        <p class="text-xs text-zinc-500 font-bold uppercase tracking-widest mb-4">📲 Skeniraj za hiter dostop</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://galskrinar-dev.github.io/sos-portal/resevalec.html&bgcolor=ffffff&color=18181b&margin=2" 
+             class="mx-auto rounded-xl border border-zinc-100 shadow-sm" alt="QR Koda SOS Portal" width="160" height="160">
+        <p class="text-[11px] text-zinc-400 mt-3 font-mono">galskrinar-dev.github.io/sos-portal</p>
+        <button onclick="shareApp()" class="mt-4 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
             <i data-lucide="share-2" class="w-4 h-4"></i> DELI Z DRUGIMI
         </button>
     </div>
-
-    <footer class="mt-6 text-xs text-slate-500 font-medium tracking-wide">
+ 
+    <footer class="mt-6 text-xs text-zinc-400 font-medium tracking-wide">
         CIVILNA ZAŠČITA &bull; UNDP DEMO 2026
     </footer>
 

@@ -4,7 +4,7 @@
   "description": "Nacionalni krizni portal in zemljevid izrednih razmer. Sledite informacijam in reševalnim navodilom.",
   "start_url": "./resevalec.html",
   "display": "standalone",
-  "background_color": "#09090b",
+  "background_color": "#ffffff",
   "theme_color": "#f97316",
   "orientation": "portrait",
   "icons": [
