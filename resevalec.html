@@ -198,6 +198,19 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openLoginModal()" id="btn-login" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="user" class="w-4 h-4 text-sky-400"></i> <span id="btn-login-lbl">Sign In</span>
+                </button>
+                <div id="user-profile-badge" class="hidden items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-xl">
+                    <div class="w-7 h-7 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/25 flex items-center justify-center text-[10px] font-extrabold" id="user-avatar">U</div>
+                    <div class="text-left hidden md:block">
+                        <span class="block text-[9px] font-bold text-slate-300 leading-tight" id="user-name-display">Guest</span>
+                        <span class="block text-[8px] text-slate-500 font-medium leading-none" id="user-role-display">Guest</span>
+                    </div>
+                    <button onclick="logoutUser()" class="text-slate-400 hover:text-rose-400 ml-1 transition" title="Odjava / Sign Out">
+                        <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
                 <button onclick="toggleDashboard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm" id="btn-dash">
                     <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-400"></i> <span class="hidden md:inline" id="btn-dash-lbl">Dashboard</span>
                 </button>
@@ -603,7 +616,12 @@
                     <input type="file" id="in-photo" accept="image/*" class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[9px] file:font-bold file:bg-blue-500/10 file:text-blue-400 hover:file:bg-blue-500/20">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-desc">Description</label>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase" id="lbl-desc">Description</label>
+                        <button onclick="aiExpandReport()" id="btn-ai-expand" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/30 text-[9px] font-bold px-2 py-1 rounded-md transition flex items-center gap-1 shadow-sm">
+                            <i data-lucide="sparkles" class="w-3 h-3"></i> <span id="lbl-ai-expand-btn">⚡ AI Auto-Expand (10 sentences)</span>
+                        </button>
+                    </div>
                     <textarea id="in-desc" rows="3" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium leading-relaxed" placeholder="Describe the situation in detail..."></textarea>
                 </div>
                 <div class="flex items-center gap-2.5 text-[10px] text-slate-500 bg-white/5 p-3 rounded-xl border border-white/5" id="report-privacy-container">
@@ -620,12 +638,20 @@
     <!-- ARTICLE VIEW MODAL -->
     <div id="analysis-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[9999] hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-white/10 rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] flex flex-col">
-            <div class="relative shrink-0">
-                <img id="viewer-img" src="" alt="" class="w-full h-56 object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-                <button onclick="closeFSModal('analysis-modal')" class="absolute top-4 right-4 text-white bg-slate-950/70 hover:bg-slate-950 border border-white/10 text-xs px-3.5 py-1.5 rounded-xl font-bold transition">✕ Close</button>
-                <p id="viewer-location" class="absolute bottom-4 left-5 text-white text-sm font-bold"></p>
-                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-blue-600 shadow-md"></span>
+            <div class="relative shrink-0 h-56">
+                <!-- Media Selector -->
+                <div class="absolute top-4 left-4 z-20 flex bg-slate-950/80 border border-slate-700/50 p-1 rounded-lg">
+                    <button onclick="toggleViewerMedia('photo')" id="btn-view-photo" class="text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition">📷 Photo</button>
+                    <button onclick="toggleViewerMedia('satellite')" id="btn-view-sat" class="text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition ml-1">🛰️ Satellite Map</button>
+                </div>
+                
+                <img id="viewer-img" src="" alt="" class="w-full h-full object-cover">
+                <div id="viewer-sat-map" class="w-full h-full hidden" style="background: #0f172a; z-index: 10;"></div>
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none z-10"></div>
+                <button onclick="closeFSModal('analysis-modal')" class="absolute top-4 right-4 text-white bg-slate-950/70 hover:bg-slate-950 border border-white/10 text-xs px-3.5 py-1.5 rounded-xl font-bold transition z-20">✕ Close</button>
+                <p id="viewer-location" class="absolute bottom-4 left-5 text-white text-sm font-bold z-20"></p>
+                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-blue-600 shadow-md z-20"></span>
             </div>
             <div class="p-6 overflow-y-auto space-y-4">
                 <div id="viewer-desc" class="text-xs text-slate-300 leading-relaxed prose prose-invert prose-xs max-w-none"></div>
@@ -687,6 +713,47 @@
             <div class="flex gap-3">
                 <button onclick="cancelEmergencyCall()" id="call-cancel" class="flex-1 bg-white/5 hover:bg-white/10 text-slate-300 border border-white/5 py-3 rounded-xl font-bold text-sm transition">Cancel</button>
                 <button onclick="confirmEmergencyCall()" id="call-confirm" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 py-3 rounded-xl font-bold text-sm transition">Call Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER LOGIN MODAL -->
+    <div id="login-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[99999] hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-white/10 rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden flex flex-col">
+            <div class="bg-slate-950 text-white p-5 flex justify-between items-center border-b border-white/5">
+                <div>
+                    <h3 class="text-md font-bold heading-font flex items-center gap-2">
+                        <i data-lucide="lock" class="w-5 h-5 text-sky-400"></i> <span id="login-modal-title">Sign In</span>
+                    </h3>
+                    <p class="text-[10px] text-slate-400 font-medium" id="login-modal-subtitle">Authorized emergency response profile access</p>
+                </div>
+                <button onclick="closeFSModal('login-modal')" class="text-slate-400 hover:text-white transition text-xl font-bold">×</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-username">Email / Username</label>
+                    <input type="text" id="login-username" placeholder="E.g. evaluator@undp.org..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-password">Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-role">Select Role</label>
+                    <select id="login-role" onchange="togglePINField()" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
+                        <option value="EVALUATOR" selected>🇺🇳 UNDP Crisis Evaluator</option>
+                        <option value="OFFICER">🇸🇮 Civil Protection Officer</option>
+                        <option value="VOLUNTEER">🤝 Registered Responder / Volunteer</option>
+                        <option value="CITIZEN">👤 General Community User</option>
+                    </select>
+                </div>
+                <div id="pin-container">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-pin">Authorization PIN (Default: 1234)</label>
+                    <input type="text" id="login-pin" value="1234" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium font-mono">
+                </div>
+                <button onclick="submitLogin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                    <i data-lucide="log-in" class="w-4 h-4"></i> <span id="btn-submit-login">SIGN IN</span>
+                </button>
             </div>
         </div>
     </div>
@@ -892,7 +959,7 @@
             'news-section-title': 'Globalni Krizni Vir', 'filter-all-lbl': 'Vse', 'filter-disaster-lbl': 'Naravne Nesreče', 'filter-war-lbl': 'Vojna / Konflikt', 'filter-econ-lbl': 'Gospodarstvo',
             'country-ph': 'Išči po državi (npr. Slovenija, Francija)...',
             'modal-report-title': 'Prijavi Incident', 'modal-report-sub': 'Prijava bo prikazana na javnem zemljevidu',
-            'lbl-city': 'Kraj / Lokacija', 'lbl-type': 'Tip Incidenta', 'lbl-severity': 'Stopnja', 'lbl-photo': 'Fotografija (Neobvezno)', 'lbl-desc': 'Opis', 'btn-submit-report': 'OBJAVI NA ZEMLJEVIDU',
+            'lbl-city': 'Kraj / Lokacija', 'lbl-type': 'Tip Incidenta', 'lbl-severity': 'Stopnja', 'lbl-photo': 'Fotografija (Neobvezno)', 'lbl-desc': 'Opis', 'btn-submit-report': 'OBJAVI NA ZEMLJEVIDU', 'lbl-ai-expand-btn': '⚡ AI Samodejno Razširi (10 povedi)',
             'safety-label': 'Varnostni Nasvet', 'viewer-map-btn-lbl': 'Pokaži na Zemljevidu',
             'cam-modal-title': 'Kamere v Živo – Slovenija',
             'footer-text': '© 2026 SOS World Crisis Portal. Resnični podatki iz GDACS (ZN), Google News RSS. Brez simulacij.',
@@ -931,7 +998,17 @@
             'opt-disaster': '🌀 Druga naravna nesreča',
             'opt-other': '❓ Drugo / Splošno',
             'sb-title': '⚡ UNDP Simulatorski Peskovnik',
-            'sb-lbl': 'Naloži simulacijo:'
+            'sb-lbl': 'Naloži simulacijo:',
+            'btn-login-lbl': 'Prijava',
+            'login-modal-title': 'Prijava uporabnika',
+            'login-modal-subtitle': 'Pooblaščen dostop za reševalne ekipe',
+            'lbl-username': 'Uporabniško ime / E-pošta',
+            'lbl-password': 'Geslo',
+            'lbl-role': 'Izberite vlogo',
+            'lbl-pin': 'Avtorizacijska PIN koda (Privzeto: 1234)',
+            'btn-submit-login': 'PRIJAVI SE',
+            'login-success': 'Uspešno prijavljen kot ',
+            'login-invalid': 'Neveljavni podatki za prijavo.'
         },
         en: {
             'h-world': 'World', 'h-portal': 'Crisis Portal', 'h-subtitle': 'Real-time global crisis mapping & AI assistance',
@@ -952,7 +1029,7 @@
             'news-section-title': 'Global Crisis Feed', 'filter-all-lbl': 'All', 'filter-disaster-lbl': 'Natural Disasters', 'filter-war-lbl': 'War / Conflict', 'filter-econ-lbl': 'Economy',
             'country-ph': 'Search country (e.g. Ukraine, France)...',
             'modal-report-title': 'Report an Incident', 'modal-report-sub': 'Your report will appear on the public map',
-            'lbl-city': 'City / Location', 'lbl-type': 'Incident Type', 'lbl-severity': 'Severity', 'lbl-photo': 'Photo (Optional)', 'lbl-desc': 'Description', 'btn-submit-report': 'SUBMIT TO MAP',
+            'lbl-city': 'City / Location', 'lbl-type': 'Incident Type', 'lbl-severity': 'Severity', 'lbl-photo': 'Photo (Optional)', 'lbl-desc': 'Description', 'btn-submit-report': 'SUBMIT TO MAP', 'lbl-ai-expand-btn': '⚡ AI Auto-Expand (10 sentences)',
             'safety-label': 'Safety Advice', 'viewer-map-btn-lbl': 'Show on Map',
             'cam-modal-title': 'Live Road Cameras – Slovenia',
             'footer-text': '© 2026 SOS World Crisis Portal. Real data from GDACS (UN), Google News RSS. No simulations.',
@@ -991,7 +1068,17 @@
             'opt-disaster': '🌀 Other Natural Disaster',
             'opt-other': '❓ Other / General Damage',
             'sb-title': '⚡ UNDP Evaluator Sandbox',
-            'sb-lbl': 'Load Simulation:'
+            'sb-lbl': 'Load Simulation:',
+            'btn-login-lbl': 'Sign In',
+            'login-modal-title': 'Sign In',
+            'login-modal-subtitle': 'Authorized emergency response profile access',
+            'lbl-username': 'Email / Username',
+            'lbl-password': 'Password',
+            'lbl-role': 'Select Role',
+            'lbl-pin': 'Authorization PIN (Default: 1234)',
+            'btn-submit-login': 'SIGN IN',
+            'login-success': 'Successfully logged in as ',
+            'login-invalid': 'Invalid login credentials.'
         },
         it: {
             'h-world': 'Mondo', 'h-portal': 'Portale Crisi', 'h-subtitle': 'Mappatura crisi globale in tempo reale',
@@ -1012,7 +1099,7 @@
             'news-section-title': 'Feed Crisi Globale', 'filter-all-lbl': 'Tutto', 'filter-disaster-lbl': 'Catastrofi Naturali', 'filter-war-lbl': 'Guerra / Conflitto', 'filter-econ-lbl': 'Economia',
             'country-ph': 'Cerca paese (es. Ucraina, Francia)...',
             'modal-report-title': 'Segnala un Incidente', 'modal-report-sub': 'La tua segnalazione apparirà sulla mappa pubblica',
-            'lbl-city': 'Città / Posizione', 'lbl-type': 'Tipo Incidente', 'lbl-severity': 'Gravità', 'lbl-photo': 'Foto (Opzionale)', 'lbl-desc': 'Descrizione', 'btn-submit-report': 'PUBBLICA SULLA MAPPA',
+            'lbl-city': 'Città / Posizione', 'lbl-type': 'Tipo Incidente', 'lbl-severity': 'Gravità', 'lbl-photo': 'Foto (Opzionale)', 'lbl-desc': 'Descrizione', 'btn-submit-report': 'PUBBLICA SULLA MAPPA', 'lbl-ai-expand-btn': '⚡ AI Espansione Automatica (10 frasi)',
             'safety-label': 'Consiglio di Sicurezza', 'viewer-map-btn-lbl': 'Mostra sulla Mappa',
             'cam-modal-title': 'Telecamere Live – Slovenia',
             'footer-text': '© 2026 SOS World Crisis Portal. Dati reali da GDACS (ONU), Google News RSS. Nessuna simulazione.',
@@ -1051,7 +1138,17 @@
             'opt-disaster': '🌀 Altro Disastro Naturale',
             'opt-other': '❓ Altri Danni / Generale',
             'sb-title': '⚡ Sandbox per Valutatori UNDP',
-            'sb-lbl': 'Carica simulazione:'
+            'sb-lbl': 'Carica simulazione:',
+            'btn-login-lbl': 'Accedi',
+            'login-modal-title': 'Accedi',
+            'login-modal-subtitle': 'Accesso autorizzato per soccorritori',
+            'lbl-username': 'Email / Nome utente',
+            'lbl-password': 'Password',
+            'lbl-role': 'Seleziona Ruolo',
+            'lbl-pin': 'PIN di autorizzazione (Predefinito: 1234)',
+            'btn-submit-login': 'ACCEDI',
+            'login-success': 'Accesso effettuato come ',
+            'login-invalid': 'Credenziali non valide.'
         },
         fr: {
             'h-world': 'Monde', 'h-portal': 'Portail Crise', 'h-subtitle': 'Cartographie des crises mondiales en temps réel',
@@ -1072,7 +1169,7 @@
             'news-section-title': 'Flux Crise Mondiale', 'filter-all-lbl': 'Tout', 'filter-disaster-lbl': 'Catastrophes Naturelles', 'filter-war-lbl': 'Guerre / Conflit', 'filter-econ-lbl': 'Économie',
             'country-ph': 'Rechercher un pays (ex. Ukraine, France)...',
             'modal-report-title': 'Signaler un Incident', 'modal-report-sub': 'Votre signalement apparaîtra sur la carte publique',
-            'lbl-city': 'Ville / Localisation', 'lbl-type': 'Type d\'Incident', 'lbl-severity': 'Gravité', 'lbl-photo': 'Photo (Optionnel)', 'lbl-desc': 'Description', 'btn-submit-report': 'PUBLIER SUR LA CARTE',
+            'lbl-city': 'Ville / Localisation', 'lbl-type': 'Type d\'Incident', 'lbl-severity': 'Gravité', 'lbl-photo': 'Photo (Optionnel)', 'lbl-desc': 'Description', 'btn-submit-report': 'PUBLIER SUR LA CARTE', 'lbl-ai-expand-btn': '⚡ AI Auto-Expansion (10 phrases)',
             'safety-label': 'Conseil de Sécurité', 'viewer-map-btn-lbl': 'Afficher sur la Carte',
             'cam-modal-title': 'Caméras Live – Slovénie',
             'footer-text': '© 2026 SOS World Crisis Portal. Données réelles de GDACS (ONU), Google News RSS. Aucune simulation.',
@@ -1111,7 +1208,17 @@
             'opt-disaster': '🌀 Autre Catastrophe Naturelle',
             'opt-other': '❓ Autres Dommages / Général',
             'sb-title': '⚡ Sandbox pour Évaluateurs UNDP',
-            'sb-lbl': 'Charger simulation:'
+            'sb-lbl': 'Charger simulation:',
+            'btn-login-lbl': 'Connexion',
+            'login-modal-title': 'Connexion',
+            'login-modal-subtitle': 'Accès autorisé aux profils d\'urgence',
+            'lbl-username': 'E-mail / Nom d\'utilisateur',
+            'lbl-password': 'Mot de passe',
+            'lbl-role': 'Sélectionner le rôle',
+            'lbl-pin': 'PIN d\'autorisation (Par défaut: 1234)',
+            'btn-submit-login': 'SE CONNECTER',
+            'login-success': 'Connexion réussie en tant que ',
+            'login-invalid': 'Identifiants invalides.'
         }
     };
 
@@ -1323,7 +1430,7 @@
             }).catch(e => console.warn('RainViewer API error:', e.message));
 
         L.control.layers({
-            '🌌 Dark Cyber Map': darkMap,
+            '🌌 Dark Slate Map': darkMap,
             '🛰️ Satellite Space': L.layerGroup([satellite, labels]),
             '⛰️ Terrain': terrainMap
         }, {
@@ -1337,7 +1444,7 @@
             const { lat, lng } = e.latlng;
             if (tempMarker) map.removeLayer(tempMarker);
             const tempIcon = L.divIcon({ className: 'pulse-marker pulse-fire', iconSize: [16,16], iconAnchor: [8,8] });
-            const popup = `<div style="font-family:'Inter',sans-serif;padding:5px;text-align:center;min-width:140px;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#ff0055;display:block;margin-bottom:4px;letter-spacing:1px;">CRISIS POINT</span><p style="margin:2px 0 6px;font-size:10px;color:#94a3b8;font-family:monospace;">[${lat.toFixed(4)}, ${lng.toFixed(4)}]</p><button onclick="triggerMapReport(${lat},${lng})" style="background:#ff0055;color:#fff;font-size:9px;border:none;padding:6px 10px;border-radius:6px;font-weight:800;cursor:pointer;width:100%;box-shadow: 0 0 10px rgba(255,0,85,0.4)">➕ Report here</button></div>`;
+            const popup = `<div style="font-family:'Inter',sans-serif;padding:5px;text-align:center;min-width:140px;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#ef4444;display:block;margin-bottom:4px;letter-spacing:1px;">CRISIS POINT</span><p style="margin:2px 0 6px;font-size:10px;color:#94a3b8;font-family:monospace;">[${lat.toFixed(4)}, ${lng.toFixed(4)}]</p><button onclick="triggerMapReport(${lat},${lng})" style="background:#ef4444;color:#fff;font-size:9px;border:none;padding:6px 10px;border-radius:6px;font-weight:800;cursor:pointer;width:100%;box-shadow: 0 2px 6px rgba(0,0,0,0.4)">➕ Report here</button></div>`;
             tempMarker = L.marker([lat, lng], { icon: tempIcon }).addTo(map).bindPopup(popup).openPopup();
         });
         window.triggerMapReport = (lat, lng) => { openReportModal(lat, lng); if (tempMarker) { map.removeLayer(tempMarker); tempMarker = null; } };
@@ -1615,7 +1722,7 @@
 
                 const icon = L.divIcon({ className: `pulse-marker ${pulseClass}`, iconSize: [14,14], iconAnchor: [7,7] });
                 const marker = L.marker([r.lat, r.lng], { icon }).addTo(map);
-                marker.bindPopup(`<div style="font-family:'Inter',sans-serif;padding:2px;min-width:160px;background:#0c0f16;color:#fff;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#00f0ff;letter-spacing:1px;">${r.type}</span><h5 style="margin:4px 0 2px;font-size:11px;font-weight:700;color:#f1f5f9;">${r.title.substring(0,60)}...</h5><p style="font-size:9px;color:#94a3b8;margin-bottom:5px;">${r.source}</p><button onclick='focusOnReport(${JSON.stringify(r).replace(/'/g,"&apos;")})' style="background:linear-gradient(135deg,#00f0ff,#00a8ff);color:#080b11;font-size:9px;border:none;padding:6px 8px;border-radius:4px;font-weight:800;cursor:pointer;width:100%">DETALJI / DETAILS</button></div>`);
+                marker.bindPopup(`<div style="font-family:'Inter',sans-serif;padding:2px;min-width:160px;background:#0f172a;color:#fff;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#0284c7;letter-spacing:1px;">${r.type}</span><h5 style="margin:4px 0 2px;font-size:11px;font-weight:700;color:#f1f5f9;">${r.title.substring(0,60)}...</h5><p style="font-size:9px;color:#94a3b8;margin-bottom:5px;">${r.source}</p><button onclick="focusOnReport('${r.id}')" style="background:#0284c7;color:#fff;font-size:9px;border:none;padding:6px 8px;border-radius:4px;font-weight:800;cursor:pointer;width:100%;box-shadow:0 2px 4px rgba(0,0,0,0.3)">DETALJI / DETAILS</button></div>`);
                 markers.push(marker);
             }
         });
@@ -1623,7 +1730,11 @@
         lucide.createIcons();
     }
 
-    window.focusOnReport = (r) => openAnalysis(r);
+    window.focusOnReport = (id) => {
+        const reports = JSON.parse(localStorage.getItem(STORAGE_KEY) || JSON.stringify(REAL_FALLBACK_REPORTS));
+        const r = reports.find(item => item.id === id);
+        if (r) openAnalysis(r);
+    };
 
     // ─────────────────────────────────────────────
     // ARTICLE MODAL
@@ -1633,6 +1744,9 @@
         const modal = document.getElementById('analysis-modal');
         document.getElementById('viewer-img').src = r.img;
         document.getElementById('viewer-location').innerText = `${r.country ? r.country.toUpperCase() + ' – ' : ''}${r.date}`;
+
+        // Reset media view tab
+        toggleViewerMedia('photo');
 
         // Reset AI container
         const aiContainer = document.getElementById('viewer-ai-container');
@@ -1655,7 +1769,7 @@
         else if (r.type === 'RESIDENTIAL') bb = 'bg-blue-500 text-white shadow-blue-500/25';
         else if (r.type === 'PUBLIC') bb = 'bg-emerald-500 text-slate-950 shadow-emerald-500/25';
         
-        badge.className = `absolute bottom-4 right-5 text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider ${bb} shadow-lg`;
+        badge.className = `absolute bottom-4 right-5 text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider ${bb} shadow-lg z-20`;
 
         document.getElementById('viewer-desc').innerHTML = marked.parse(r.analysis || r.desc || '');
         document.getElementById('viewer-safety-text').innerText = safetyAdvice[r.type] || safetyAdvice['INFO'];
@@ -1669,6 +1783,48 @@
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         lucide.createIcons();
+    }
+
+    let viewerMap = null;
+    function toggleViewerMedia(mode) {
+        const img = document.getElementById('viewer-img');
+        const sat = document.getElementById('viewer-sat-map');
+        const btnPhoto = document.getElementById('btn-view-photo');
+        const btnSat = document.getElementById('btn-view-sat');
+
+        if (mode === 'photo') {
+            img.classList.remove('hidden');
+            sat.classList.add('hidden');
+            btnPhoto.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition';
+            btnSat.className = 'text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition ml-1';
+        } else {
+            img.classList.add('hidden');
+            sat.classList.remove('hidden');
+            btnPhoto.className = 'text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition';
+            btnSat.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition ml-1';
+
+            if (activeViewingReport && activeViewingReport.lat && activeViewingReport.lng) {
+                setTimeout(() => {
+                    if (!viewerMap) {
+                        viewerMap = L.map('viewer-sat-map', { zoomControl: false, attributionControl: false }).setView([activeViewingReport.lat, activeViewingReport.lng], 15);
+                        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(viewerMap);
+                        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 20 }).addTo(viewerMap);
+                    } else {
+                        viewerMap.setView([activeViewingReport.lat, activeViewingReport.lng], 15);
+                    }
+
+                    // Remove existing markers
+                    viewerMap.eachLayer(layer => {
+                        if (layer instanceof L.Marker) viewerMap.removeLayer(layer);
+                    });
+
+                    // Add emergency red marker
+                    const icon = L.divIcon({ className: 'pulse-marker pulse-fire', iconSize: [14,14], iconAnchor: [7,7] });
+                    L.marker([activeViewingReport.lat, activeViewingReport.lng], { icon }).addTo(viewerMap);
+                    viewerMap.invalidateSize();
+                }, 100);
+            }
+        }
     }
 
     // ─────────────────────────────────────────────
@@ -2079,7 +2235,7 @@
         navigator.geolocation.getCurrentPosition(pos => {
             const icon = L.divIcon({
                 className: 'pulse-marker',
-                html: '<div style="background:#4f46e5;width:100%;height:100%;border-radius:50%;box-shadow:0 0 15px #4f46e5;"></div>',
+                html: '<div style="background:#10b981;width:100%;height:100%;border-radius:50%;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
                 iconSize: [16,16], iconAnchor: [8,8]
             });
             const m = L.marker([pos.coords.latitude, pos.coords.longitude], { icon }).addTo(map);
@@ -2087,6 +2243,97 @@
             map.flyTo([pos.coords.latitude, pos.coords.longitude], 12);
             addChatMessage('SYS', T('volunteer-success'), false);
         }, () => alert(T('cant-get-loc')));
+    }
+
+    // ─────────────────────────────────────────────
+    // AUTHENTICATION SYSTEM
+    // ─────────────────────────────────────────────
+    function openLoginModal() {
+        const modal = document.getElementById('login-modal');
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        togglePINField();
+    }
+
+    function togglePINField() {
+        const role = document.getElementById('login-role').value;
+        const pinContainer = document.getElementById('pin-container');
+        if (role === 'EVALUATOR' || role === 'OFFICER') {
+            pinContainer.classList.remove('hidden');
+        } else {
+            pinContainer.classList.add('hidden');
+        }
+    }
+
+    function submitLogin() {
+        const user = document.getElementById('login-username').value.trim();
+        const pass = document.getElementById('login-password').value.trim();
+        const role = document.getElementById('login-role').value;
+        const pin = document.getElementById('login-pin').value.trim();
+
+        if (!user || !pass) {
+            alert(T('fill-fields'));
+            return;
+        }
+
+        if ((role === 'EVALUATOR' || role === 'OFFICER') && pin !== '1234') {
+            alert(T('login-invalid'));
+            return;
+        }
+
+        let displayName = user.split('@')[0];
+        displayName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+        
+        let roleDisplay = 'User';
+        if (role === 'EVALUATOR') roleDisplay = 'UNDP Evaluator';
+        else if (role === 'OFFICER') roleDisplay = 'Civil Protection Officer';
+        else if (role === 'VOLUNTEER') roleDisplay = 'Volunteer Responder';
+
+        const session = { name: displayName, email: user, role: roleDisplay, avatar: displayName.charAt(0).toUpperCase() };
+        localStorage.setItem('user_session', JSON.stringify(session));
+
+        applyUserSession(session);
+        closeFSModal('login-modal');
+
+        addChatMessage('SYS', `${T('login-success') || 'Successfully logged in as '} **${displayName}** (${roleDisplay})`, false);
+    }
+
+    function applyUserSession(session) {
+        if (!session) return;
+        document.getElementById('btn-login').classList.add('hidden');
+        
+        const badge = document.getElementById('user-profile-badge');
+        badge.classList.remove('hidden');
+        badge.classList.add('flex');
+
+        document.getElementById('user-avatar').textContent = session.avatar || 'U';
+        document.getElementById('user-name-display').textContent = session.name;
+        document.getElementById('user-role-display').textContent = session.role;
+    }
+
+    function logoutUser() {
+        localStorage.removeItem('user_session');
+        document.getElementById('btn-login').classList.remove('hidden');
+        
+        const badge = document.getElementById('user-profile-badge');
+        badge.classList.add('hidden');
+        badge.classList.remove('flex');
+
+        document.getElementById('login-username').value = '';
+        document.getElementById('login-password').value = '';
+    }
+
+    function checkLoginSession() {
+        const stored = localStorage.getItem('user_session');
+        if (stored) {
+            try {
+                const session = JSON.parse(stored);
+                applyUserSession(session);
+            } catch(e) {
+                localStorage.removeItem('user_session');
+            }
+        }
     }
 
     // ─────────────────────────────────────────────
@@ -2416,11 +2663,64 @@
         }
     }
 
+    async function aiExpandReport() {
+        const city = document.getElementById('in-city').value.trim();
+        const type = document.getElementById('in-type').value;
+        const descInput = document.getElementById('in-desc');
+        const brief = descInput.value.trim();
+        const btn = document.getElementById('btn-ai-expand');
+
+        if (!brief) {
+            alert('Prosimo, vnesite kratek opis za razširitev. / Please enter a brief description to expand.');
+            return;
+        }
+
+        const origHtml = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="animate-pulse">⏳ AI Expanding...</span>';
+
+        const prompt = `
+        You are a formal emergency responder and crisis dispatcher.
+        Expand the following brief incident description into a highly detailed, professional crisis report of exactly 10 sentences.
+        Write the report in the requested language corresponding to language code '${currentLang}'.
+        
+        Brief Description: "${brief}"
+        Incident Category/Type: "${type}"
+        Incident Location: "${city || 'Unknown location'}"
+        
+        Focus on structural damage, logistics routing impact, local hazard containment, community shelters status, and civilian security instructions. Do not use bullet points or lists; write as a single flowing narrative paragraph of exactly 10 sentences.
+        `;
+
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }]
+                })
+            });
+            const result = await response.json();
+            if (result.error) throw new Error(result.error.message);
+            const answer = result.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (!answer) throw new Error('Empty response');
+
+            descInput.value = answer.trim();
+        } catch(e) {
+            console.warn('AI report expansion failed:', e.message);
+            alert('AI report expansion failed. Please write description manually.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
+            lucide.createIcons();
+        }
+    }
+
     // ─────────────────────────────────────────────
     // INITIALIZATION
     // ─────────────────────────────────────────────
     window.onload = async () => {
         setLang('en');
+        checkLoginSession();
         initMap();
         lucide.createIcons();
         await loadNews();
