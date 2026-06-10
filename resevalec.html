@@ -29,18 +29,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
-            --primary: #0284c7; /* OCHA Sky Blue */
-            --success: #10b981; /* Emerald Green */
+            --primary: #f97316; /* Premium Vibrant Orange */
+            --success: #10b981; /* Success Green */
             --warning: #f59e0b; /* Amber Yellow */
-            --danger: #ef4444;  /* Emergency Red */
-            --bg-dark: #0f172a;  /* Dark Slate */
-            --panel-bg: #1e293b; /* Slate Gray */
+            --danger: #ef4444;  /* Critical Red */
+            --bg-dark: #09090b;  /* Obsidian Black */
+            --panel-bg: #18181b; /* Charcoal Panel */
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
-            color: #f1f5f9;
+            color: #f4f4f5;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -50,15 +50,15 @@
         /* Professional Panels */
         .glass-panel {
             background: var(--panel-bg);
-            border: 1px solid #334155;
-            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid #27272a;
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.5);
         }
 
         .map-container {
             border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            border: 1px solid #334155;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border: 1px solid #27272a;
             height: 520px;
             width: 100%;
         }
@@ -81,28 +81,28 @@
             animation: pulse-ring 1.8s cubic-bezier(0.24,0,0.38,1) infinite;
         }
 
-        .pulse-fire { background-color: var(--danger); }
-        .pulse-fire::after { border: 2px solid var(--danger); }
-        .pulse-flood { background-color: #3b82f6; }
-        .pulse-flood::after { border: 2px solid #3b82f6; }
-        .pulse-road { background-color: var(--warning); }
-        .pulse-road::after { border: 2px solid var(--warning); }
-        .pulse-quake { background-color: #a855f7; }
-        .pulse-quake::after { border: 2px solid #a855f7; }
-        .pulse-war { background-color: #f43f5e; }
-        .pulse-war::after { border: 2px solid #f43f5e; }
-        .pulse-economy { background-color: var(--success); }
-        .pulse-economy::after { border: 2px solid var(--success); }
+        .pulse-fire { background-color: #ef4444; }
+        .pulse-fire::after { border: 2px solid #ef4444; }
+        .pulse-flood { background-color: #f97316; }
+        .pulse-flood::after { border: 2px solid #f97316; }
+        .pulse-road { background-color: #f97316; }
+        .pulse-road::after { border: 2px solid #f97316; }
+        .pulse-quake { background-color: #ea580c; }
+        .pulse-quake::after { border: 2px solid #ea580c; }
+        .pulse-war { background-color: #b91c1c; }
+        .pulse-war::after { border: 2px solid #b91c1c; }
+        .pulse-economy { background-color: #71717a; }
+        .pulse-economy::after { border: 2px solid #71717a; }
         .pulse-info { background-color: var(--primary); }
         .pulse-info::after { border: 2px solid var(--primary); }
-        .pulse-user { background-color: var(--success); }
-        .pulse-user::after { border: 2px solid var(--success); animation: pulse-ring-user 1.5s ease-out infinite; }
-        .pulse-schools { background-color: #6366f1; }
-        .pulse-schools::after { border: 2px solid #6366f1; }
-        .pulse-utilities { background-color: #06b6d4; }
-        .pulse-utilities::after { border: 2px solid #06b6d4; }
-        .pulse-public { background-color: #10b981; }
-        .pulse-public::after { border: 2px solid #10b981; }
+        .pulse-user { background-color: #ffffff; }
+        .pulse-user::after { border: 2px solid #ffffff; animation: pulse-ring-user 1.5s ease-out infinite; }
+        .pulse-schools { background-color: #71717a; }
+        .pulse-schools::after { border: 2px solid #71717a; }
+        .pulse-utilities { background-color: #f97316; }
+        .pulse-utilities::after { border: 2px solid #f97316; }
+        .pulse-public { background-color: #a1a1aa; }
+        .pulse-public::after { border: 2px solid #a1a1aa; }
 
         @keyframes pulse-ring {
             0% { transform: scale(0.6); opacity: 1; }
@@ -138,9 +138,9 @@
 
         /* Source badges */
         .badge-gdacs { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .badge-gnews { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .badge-gnews { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
         .badge-war { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .badge-economy { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-economy { background: rgba(228, 228, 231, 0.1); color: #d4d4d8; border: 1px solid rgba(228, 228, 231, 0.2); }
 
         /* Custom alert animation */
         .alert-pulse { animation: alert-glow 2s infinite; }
@@ -167,18 +167,18 @@
     </div>
 
     <!-- TOP HEADER -->
-    <header class="bg-slate-900 border-b border-slate-800 shadow-md">
+    <header class="bg-zinc-950 border-b border-zinc-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center gap-3">
             <!-- Logo -->
             <div class="flex items-center gap-3 shrink-0">
-                <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-2.5 rounded-2xl flex items-center justify-center shadow-md shadow-blue-900/20">
+                <div class="bg-gradient-to-br from-orange-500 to-orange-700 text-white p-2.5 rounded-2xl flex items-center justify-center shadow-md shadow-orange-950/20">
                     <i data-lucide="globe-2" class="w-6 h-6"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold heading-font tracking-tight text-white flex items-center gap-2">
-                        SOS <span id="h-world" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-400">World</span> <span class="bg-slate-800 text-slate-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-slate-700" id="h-portal">Crisis Portal</span>
+                        SOS <span id="h-world" class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">World</span> <span class="bg-zinc-850 text-zinc-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase border border-zinc-750" id="h-portal">Crisis Portal</span>
                     </h1>
-                    <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase" id="h-subtitle">Real-time global crisis mapping & AI assistance</p>
+                    <p class="text-[10px] text-zinc-400 font-medium tracking-wide uppercase" id="h-subtitle">Real-time global crisis mapping & AI assistance</p>
                 </div>
             </div>
 
@@ -189,7 +189,7 @@
             </div>
 
             <!-- Language Switcher -->
-            <div class="flex items-center gap-1 bg-slate-800 p-1 rounded-xl shrink-0 border border-slate-700">
+            <div class="flex items-center gap-1 bg-zinc-900 p-1 rounded-xl shrink-0 border border-zinc-800">
                 <button class="lang-btn active text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('sl')" id="lang-sl">🇸🇮 SL</button>
                 <button class="lang-btn text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('en')" id="lang-en">🇬🇧 EN</button>
                 <button class="lang-btn text-[10px] font-bold px-3 py-1.5 rounded-lg" onclick="setLang('it')" id="lang-it">🇮🇹 IT</button>
@@ -198,27 +198,27 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="openLoginModal()" id="btn-login" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
-                    <i data-lucide="user" class="w-4 h-4 text-sky-400"></i> <span id="btn-login-lbl">Sign In</span>
+                <button onclick="openLoginModal()" id="btn-login" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="user" class="w-4 h-4 text-orange-400"></i> <span id="btn-login-lbl">Sign In</span>
                 </button>
-                <div id="user-profile-badge" class="hidden items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-xl">
-                    <div class="w-7 h-7 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/25 flex items-center justify-center text-[10px] font-extrabold" id="user-avatar">U</div>
+                <div id="user-profile-badge" class="hidden items-center gap-2 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-xl">
+                    <div class="w-7 h-7 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/25 flex items-center justify-center text-[10px] font-extrabold" id="user-avatar">U</div>
                     <div class="text-left hidden md:block">
-                        <span class="block text-[9px] font-bold text-slate-300 leading-tight" id="user-name-display">Guest</span>
-                        <span class="block text-[8px] text-slate-500 font-medium leading-none" id="user-role-display">Guest</span>
+                        <span class="block text-[9px] font-bold text-zinc-300 leading-tight" id="user-name-display">Guest</span>
+                        <span class="block text-[8px] text-zinc-500 font-medium leading-none" id="user-role-display">Guest</span>
                     </div>
-                    <button onclick="logoutUser()" class="text-slate-400 hover:text-rose-400 ml-1 transition" title="Odjava / Sign Out">
+                    <button onclick="logoutUser()" class="text-zinc-400 hover:text-rose-400 ml-1 transition" title="Odjava / Sign Out">
                         <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
-                <button onclick="toggleDashboard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm" id="btn-dash">
-                    <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-400"></i> <span class="hidden md:inline" id="btn-dash-lbl">Dashboard</span>
+                <button onclick="toggleDashboard()" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm" id="btn-dash">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4 text-orange-400"></i> <span class="hidden md:inline" id="btn-dash-lbl">Dashboard</span>
                 </button>
-                <button onclick="autoGetLocation()" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
+                <button onclick="autoGetLocation()" class="bg-orange-600 hover:bg-orange-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
                     <i data-lucide="map-pin" class="w-4 h-4"></i> <span class="hidden sm:inline" id="btn-myloc">My Location</span>
                 </button>
-                <button onclick="openCameras()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
-                    <i data-lucide="video" class="w-4 h-4 text-emerald-400"></i> <span class="hidden sm:inline" id="btn-cams">Live Cameras</span>
+                <button onclick="openCameras()" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="video" class="w-4 h-4 text-orange-400"></i> <span class="hidden sm:inline" id="btn-cams">Live Cameras</span>
                 </button>
                 <button onclick="openReportModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-2.5 rounded-xl font-bold text-xs transition duration-200 shadow-md flex items-center gap-1.5">
                     <i data-lucide="plus-circle" class="w-4 h-4"></i> <span id="btn-report">Report</span>
@@ -251,21 +251,21 @@
                 </div>
             </div>
             <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-md flex items-center gap-3">
-                <div class="p-3 rounded-xl bg-blue-500/10 text-blue-400">
+                <div class="p-3 rounded-xl bg-orange-500/10 text-orange-400">
                     <i data-lucide="newspaper" class="w-5 h-5"></i>
                 </div>
                 <div>
                     <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider" id="stat-label-3">News Source</span>
-                    <span class="text-xs font-extrabold text-blue-400 uppercase">GDACS + Google</span>
+                    <span class="text-xs font-extrabold text-orange-400 uppercase">GDACS + Google</span>
                 </div>
             </div>
             <div class="glass-panel p-4 rounded-2xl border border-white/5 shadow-md flex items-center gap-3">
-                <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-500">
+                <div class="p-3 rounded-xl bg-white/5 text-zinc-400 border border-white/5">
                     <i data-lucide="shield-check" class="w-5 h-5"></i>
                 </div>
                 <div>
                     <span class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider" id="stat-label-4">Data Type</span>
-                    <span class="text-xs font-extrabold text-emerald-400 uppercase" id="stat-realtime">Live Real Data</span>
+                    <span class="text-xs font-extrabold text-zinc-300 uppercase" id="stat-realtime">Live Real Data</span>
                 </div>
             </div>
         </div>
@@ -280,16 +280,16 @@
                     <!-- Floating Legend -->
                     <div class="absolute bottom-5 right-5 glass-panel border border-white/5 rounded-2xl p-4 z-[999] shadow-2xl max-w-[230px]">
                         <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-                            <i data-lucide="info" class="w-3.5 h-3.5 text-cyan-400"></i> <span id="legend-title">Map Legend</span>
+                            <i data-lucide="info" class="w-3.5 h-3.5 text-orange-400"></i> <span id="legend-title">Map Legend</span>
                         </h4>
                         <div class="space-y-1.5 text-xs font-semibold text-slate-300">
                             <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-rose-600 border border-white/10 shadow-md inline-block"></span> <span id="leg-fire">Fire / Disaster</span></div>
-                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-flood">Flood / Cyclone</span></div>
-                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-purple-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-quake">Earthquake</span></div>
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-flood">Flood / Cyclone</span></div>
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-quake">Earthquake</span></div>
                             <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-red-700 border border-white/10 shadow-md inline-block"></span> <span id="leg-war">War / Conflict</span></div>
-                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-econ">Economy</span></div>
+                            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-zinc-500 border border-white/10 shadow-md inline-block"></span> <span id="leg-econ">Economy</span></div>
                             <div class="flex items-center gap-2 border-t border-white/5 pt-1.5 mt-1">
-                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white/20 shadow-md inline-block animate-pulse"></span> <span id="leg-me">My Location</span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-white border border-white/20 shadow-md inline-block animate-pulse"></span> <span id="leg-me">My Location</span>
                             </div>
                         </div>
                     </div>
@@ -308,8 +308,8 @@
                             <div><span class="block text-[9px] text-rose-500 font-extrabold uppercase" id="em-112">Fire & Rescue</span><span class="text-lg heading-font">112</span></div>
                             <i data-lucide="phone" class="w-4 h-4 opacity-80"></i>
                         </button>
-                        <button onclick="initiateEmergencyCall('113','113 – Police')" class="w-full text-left flex items-center justify-between p-3 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 text-blue-400 font-bold transition">
-                            <div><span class="block text-[9px] text-blue-500 font-extrabold uppercase" id="em-113">Police</span><span class="text-lg heading-font">113</span></div>
+                        <button onclick="initiateEmergencyCall('113','113 – Police')" class="w-full text-left flex items-center justify-between p-3 rounded-xl bg-zinc-800/40 hover:bg-zinc-800 border border-zinc-750 text-zinc-300 font-bold transition">
+                            <div><span class="block text-[9px] text-zinc-400 font-extrabold uppercase" id="em-113">Police</span><span class="text-lg heading-font">113</span></div>
                             <i data-lucide="phone" class="w-4 h-4 opacity-80"></i>
                         </button>
                         <button onclick="initiateEmergencyCall('1987','AMZS')" class="w-full text-left flex items-center justify-between p-3.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 text-amber-400 font-bold transition sm:col-span-2">
@@ -320,19 +320,19 @@
                 </div>
 
                 <!-- SOS Guide -->
-                <div class="glass-panel rounded-2xl p-5 border border-slate-700">
+                <div class="glass-panel rounded-2xl p-5 border border-zinc-800">
                     <h3 class="text-sm font-bold heading-font text-white mb-3 flex items-center gap-2">
-                        <i data-lucide="book-open" class="w-4 h-4 text-sky-400"></i> <span id="section-guide">SOS Quick Guide</span>
+                        <i data-lucide="book-open" class="w-4 h-4 text-orange-400"></i> <span id="section-guide">SOS Quick Guide</span>
                     </h3>
-                    <div class="flex border-b border-slate-700 text-xs font-bold text-slate-400 mb-3.5">
-                        <button onclick="switchSOSTab('tab-flood')" id="btn-tab-flood" class="flex-1 pb-2 border-b-2 border-sky-500 text-sky-400 transition font-bold" id="tab-btn-flood">🌊 <span id="tab-flood-lbl">Floods</span></button>
+                    <div class="flex border-b border-zinc-800 text-xs font-bold text-slate-400 mb-3.5">
+                        <button onclick="switchSOSTab('tab-flood')" id="btn-tab-flood" class="flex-1 pb-2 border-b-2 border-orange-500 text-orange-400 transition font-bold" id="tab-btn-flood">🌊 <span id="tab-flood-lbl">Floods</span></button>
                         <button onclick="switchSOSTab('tab-fire')" id="btn-tab-fire" class="flex-1 pb-2 border-b-2 border-transparent hover:text-slate-200 transition">🔥 <span id="tab-fire-lbl">Fire</span></button>
                         <button onclick="switchSOSTab('tab-quake')" id="btn-tab-quake" class="flex-1 pb-2 border-b-2 border-transparent hover:text-slate-200 transition">🏠 <span id="tab-quake-lbl">Quake</span></button>
                     </div>
                     <div id="tab-flood" class="sos-tab-content text-xs text-slate-300 space-y-2.5">
-                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">1</span><p id="guide-f1">Move to higher ground. Do not cross flowing water.</p></div>
-                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">2</span><p id="guide-f2">Turn off electricity, gas and water before leaving home.</p></div>
-                        <div class="flex gap-2"><span class="bg-sky-500/10 text-sky-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-sky-500/20">3</span><p id="guide-f3">Prepare emergency bag (documents, flashlight, water, first aid).</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">1</span><p id="guide-f1">Move to higher ground. Do not cross flowing water.</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">2</span><p id="guide-f2">Turn off electricity, gas and water before leaving home.</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">3</span><p id="guide-f3">Prepare emergency bag (documents, flashlight, water, first aid).</p></div>
                     </div>
                     <div id="tab-fire" class="sos-tab-content text-xs text-slate-300 space-y-2.5 hidden">
                         <div class="flex gap-2"><span class="bg-rose-500/10 text-rose-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-rose-500/20">1</span><p id="guide-fi1">Call 112 immediately and state the location clearly.</p></div>
@@ -340,9 +340,9 @@
                         <div class="flex gap-2"><span class="bg-rose-500/10 text-rose-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-rose-500/20">3</span><p id="guide-fi3">Close doors behind you to slow the spread. Do not use elevators.</p></div>
                     </div>
                     <div id="tab-quake" class="sos-tab-content text-xs text-slate-300 space-y-2.5 hidden">
-                        <div class="flex gap-2"><span class="bg-purple-500/10 text-purple-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-purple-500/20">1</span><p id="guide-q1">Drop, cover under a sturdy table, and hold on. Protect your head.</p></div>
-                        <div class="flex gap-2"><span class="bg-purple-500/10 text-purple-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-purple-500/20">2</span><p id="guide-q2">Stay away from windows, mirrors and exterior walls.</p></div>
-                        <div class="flex gap-2"><span class="bg-purple-500/10 text-purple-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-purple-500/20">3</span><p id="guide-q3">If outside, move to open space away from buildings and power lines.</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">1</span><p id="guide-q1">Drop, cover under a sturdy table, and hold on. Protect your head.</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">2</span><p id="guide-q2">Stay away from windows, mirrors and exterior walls.</p></div>
+                        <div class="flex gap-2"><span class="bg-orange-500/10 text-orange-400 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-orange-500/20">3</span><p id="guide-q3">If outside, move to open space away from buildings and power lines.</p></div>
                     </div>
                 </div>
 
@@ -351,8 +351,8 @@
                     <i data-lucide="siren" class="w-5 h-5 animate-bounce"></i> <span id="btn-panic">🆘 SOS PANIC – SEND LOCATION</span>
                 </button>
                 <!-- Volunteer Button -->
-                <button onclick="registerVolunteer()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-3.5 rounded-2xl font-bold text-xs transition duration-150 border border-slate-700 flex items-center justify-center gap-2 mt-3 shadow-sm" id="btn-volunteer-reg">
-                    <i data-lucide="heart" class="w-4 h-4 text-emerald-400"></i> <span id="btn-vol-lbl">🤝 Register as Volunteer</span>
+                <button onclick="registerVolunteer()" class="w-full bg-zinc-900 hover:bg-zinc-800 text-zinc-200 py-3.5 rounded-2xl font-bold text-xs transition duration-150 border border-zinc-800 flex items-center justify-center gap-2 mt-3 shadow-sm" id="btn-volunteer-reg">
+                    <i data-lucide="heart" class="w-4 h-4 text-orange-400"></i> <span id="btn-vol-lbl">🤝 Register as Volunteer</span>
                 </button>
             </div>
         </div>
@@ -362,34 +362,34 @@
 
             <!-- AI CHAT (5/12) -->
             <div class="lg:col-span-5">
-                <div class="glass-panel rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col chat-box">
+                <div class="glass-panel rounded-2xl border border-zinc-800 shadow-2xl overflow-hidden flex flex-col chat-box">
                     <!-- Chat Header -->
-                    <div class="bg-slate-900 px-5 py-4 flex justify-between items-center border-b border-slate-800">
+                    <div class="bg-zinc-950 px-5 py-4 flex justify-between items-center border-b border-zinc-900">
                         <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></div>
-                            <span class="text-xs font-bold tracking-wider uppercase text-sky-400 heading-font" id="chat-header-title">AI SOS Assistant</span>
+                            <div class="w-2 h-2 rounded-full bg-orange-400 animate-pulse"></div>
+                            <span class="text-xs font-bold tracking-wider uppercase text-orange-400 heading-font" id="chat-header-title">AI SOS Assistant</span>
                         </div>
-                        <span class="text-[9px] text-slate-400 font-bold bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-lg">Gemini 1.5 Flash</span>
+                        <span class="text-[9px] text-zinc-400 font-bold bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-lg">Gemini 1.5 Flash</span>
                     </div>
                     <!-- Chat Messages -->
-                    <div id="chat-messages" class="chat-messages p-5 space-y-4 bg-slate-900/10">
+                    <div id="chat-messages" class="chat-messages p-5 space-y-4 bg-zinc-950/10">
                         <div class="flex items-start gap-3 max-w-[85%]">
-                            <div class="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xs shrink-0 font-bold shadow-sm border border-sky-500/25">AI</div>
-                            <div class="bg-slate-800 p-3.5 rounded-2xl rounded-tl-sm border border-slate-700 shadow-md text-xs text-slate-200 leading-relaxed" id="ai-greeting">
+                            <div class="w-8 h-8 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xs shrink-0 font-bold shadow-sm border border-orange-500/25">AI</div>
+                            <div class="bg-zinc-900 p-3.5 rounded-2xl rounded-tl-sm border border-zinc-850 shadow-md text-xs text-zinc-200 leading-relaxed" id="ai-greeting">
                                 Hello! I am your global AI Crisis Assistant. I can help with emergency guidance in any language. What do you need?
                             </div>
                         </div>
                     </div>
                     <!-- Quick Replies -->
-                    <div class="px-4 py-2 border-t border-slate-800 flex gap-2 overflow-x-auto no-scrollbar bg-slate-900/30 shrink-0">
-                        <button onclick="quickAsk(T('q_flood'))" class="bg-slate-800 hover:bg-sky-500/10 hover:text-sky-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🌊 <span id="qb-flood">Flood</span></button>
-                        <button onclick="quickAsk(T('q_fire'))" class="bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🔥 <span id="qb-fire">Fire</span></button>
-                        <button onclick="quickAsk(T('q_kit'))" class="bg-slate-800 hover:bg-amber-500/10 hover:text-amber-400 text-slate-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-slate-700 whitespace-nowrap transition shrink-0">🎒 <span id="qb-kit">Emergency Kit</span></button>
+                    <div class="px-4 py-2 border-t border-zinc-900 flex gap-2 overflow-x-auto no-scrollbar bg-zinc-950/30 shrink-0">
+                        <button onclick="quickAsk(T('q_flood'))" class="bg-zinc-900 hover:bg-orange-500/10 hover:text-orange-400 text-zinc-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-zinc-800 whitespace-nowrap transition shrink-0">🌊 <span id="qb-flood">Flood</span></button>
+                        <button onclick="quickAsk(T('q_fire'))" class="bg-zinc-900 hover:bg-rose-500/10 hover:text-rose-400 text-zinc-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-zinc-800 whitespace-nowrap transition shrink-0">🔥 <span id="qb-fire">Fire</span></button>
+                        <button onclick="quickAsk(T('q_kit'))" class="bg-zinc-900 hover:bg-amber-500/10 hover:text-amber-400 text-zinc-300 text-[10px] font-bold px-3.5 py-2 rounded-full border border-zinc-800 whitespace-nowrap transition shrink-0">🎒 <span id="qb-kit">Emergency Kit</span></button>
                     </div>
                     <!-- Input -->
-                    <div class="p-3 border-t border-slate-800 bg-slate-900/30 flex gap-2">
-                        <input type="text" id="chat-input" onkeydown="if(event.key==='Enter') sendMsg()" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-sky-500/50 transition font-medium" placeholder="Ask in any language...">
-                        <button onclick="sendMsg()" class="bg-blue-600 hover:bg-blue-700 text-white w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition shadow-md">
+                    <div class="p-3 border-t border-zinc-900 bg-zinc-950/30 flex gap-2">
+                        <input type="text" id="chat-input" onkeydown="if(event.key==='Enter') sendMsg()" class="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-orange-500/50 transition font-medium" placeholder="Ask in any language...">
+                        <button onclick="sendMsg()" class="bg-orange-600 hover:bg-orange-700 text-white w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition shadow-md">
                             <i data-lucide="send" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -400,17 +400,17 @@
             <div class="lg:col-span-7 space-y-4">
                 <div class="flex justify-between items-center flex-wrap gap-2">
                     <h3 class="text-sm font-bold heading-font text-white flex items-center gap-2">
-                        <i data-lucide="newspaper" class="w-4 h-4 text-sky-400"></i> <span id="news-section-title">Global Crisis Feed</span>
+                        <i data-lucide="newspaper" class="w-4 h-4 text-orange-400"></i> <span id="news-section-title">Global Crisis Feed</span>
                     </h3>
-                    <div class="flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/25 rounded-full px-3 py-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-                        <span class="text-[9px] text-sky-400 font-extrabold uppercase tracking-wider">LIVE CRISIS RADAR</span>
+                    <div class="flex items-center gap-1.5 bg-orange-500/10 border border-orange-500/25 rounded-full px-3 py-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span>
+                        <span class="text-[9px] text-orange-400 font-extrabold uppercase tracking-wider">LIVE CRISIS RADAR</span>
                     </div>
                 </div>
 
                 <!-- Topic Filters -->
                 <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1 shrink-0 flex-wrap">
-                    <button onclick="filterNews('ALL')" id="filter-all" class="bg-blue-600 text-white text-[10px] font-extrabold px-3.5 py-1.5 rounded-full border border-blue-600 shadow-sm whitespace-nowrap transition"><span id="filter-all-lbl">All</span></button>
+                    <button onclick="filterNews('ALL')" id="filter-all" class="bg-orange-600 text-white text-[10px] font-extrabold px-3.5 py-1.5 rounded-full border border-orange-600 shadow-sm whitespace-nowrap transition"><span id="filter-all-lbl">All</span></button>
                     <button onclick="filterNews('DISASTER')" id="filter-disaster" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/20">🌍 <span id="filter-disaster-lbl">Natural Disasters</span></button>
                     <button onclick="filterNews('WAR')" id="filter-war" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/20">⚔️ <span id="filter-war-lbl">War / Conflict</span></button>
                     <button onclick="filterNews('ECONOMY')" id="filter-economy" class="bg-white/5 text-slate-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full border border-white/5 whitespace-nowrap transition hover:bg-emerald-500/10 hover:text-emerald-400 hover:border-emerald-500/20">📈 <span id="filter-econ-lbl">Economy</span></button>
@@ -419,8 +419,8 @@
                 <!-- Country Search -->
                 <div class="flex gap-2">
                     <div class="relative flex-1">
-                        <input type="text" id="country-search" placeholder="Search country (e.g. Ukraine, France)..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500/50 transition font-medium pr-10">
-                        <button onclick="applyCountryFilter()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg text-[9px] font-extrabold tracking-wider transition">GO</button>
+                        <input type="text" id="country-search" placeholder="Search country (e.g. Ukraine, France)..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-orange-500/50 transition font-medium pr-10">
+                        <button onclick="applyCountryFilter()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-600 hover:bg-orange-700 text-white px-2.5 py-1 rounded-lg text-[9px] font-extrabold tracking-wider transition">GO</button>
                     </div>
                     <button onclick="clearCountryFilter()" class="bg-white/5 hover:bg-white/10 text-slate-300 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1 border border-white/5">
                         <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -438,20 +438,20 @@
         </div>
 
         <!-- CRISIS MANAGERS & AUTHORITIES DASHBOARD (COLLAPSED BY DEFAULT) -->
-        <section id="manager-dashboard" class="hidden transition-all duration-300 ease-in-out glass-panel rounded-3xl p-6 border border-indigo-500/20 shadow-2xl space-y-6">
+        <section id="manager-dashboard" class="hidden transition-all duration-300 ease-in-out glass-panel rounded-3xl p-6 border border-zinc-800 shadow-2xl space-y-6">
             <!-- Dashboard Header -->
             <div class="flex justify-between items-center border-b border-white/5 pb-4 flex-wrap gap-4">
                 <div>
                     <h2 class="text-lg font-bold heading-font text-white flex items-center gap-2">
-                        <i data-lucide="layout-dashboard" class="w-5 h-5 text-indigo-400"></i> <span id="dash-title">Crisis Responder & Analytics Dashboard</span>
+                        <i data-lucide="layout-dashboard" class="w-5 h-5 text-orange-400"></i> <span id="dash-title">Crisis Responder & Analytics Dashboard</span>
                     </h2>
                     <p class="text-[11px] text-slate-400 font-medium" id="dash-subtitle">Real-time situational awareness, priority tasks & data export</p>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="exportData('csv')" class="bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-400 border border-indigo-500/30 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5" id="btn-export-csv">
+                    <button onclick="exportData('csv')" class="bg-orange-600/20 hover:bg-orange-600/40 text-orange-400 border border-orange-500/30 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5" id="btn-export-csv">
                         <i data-lucide="download" class="w-4 h-4"></i> Export CSV
                     </button>
-                    <button onclick="exportData('geojson')" class="bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-400 border border-indigo-500/30 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5" id="btn-export-json">
+                    <button onclick="exportData('geojson')" class="bg-orange-600/20 hover:bg-orange-600/40 text-orange-400 border border-orange-500/30 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5" id="btn-export-json">
                         <i data-lucide="download" class="w-4 h-4"></i> Export GeoJSON
                     </button>
                 </div>
@@ -489,20 +489,20 @@
             </div>
 
             <!-- UNDP Evaluator Sandbox & Scenario Generator -->
-            <div class="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-4 space-y-3">
+            <div class="bg-orange-950/20 border border-orange-500/20 rounded-2xl p-4 space-y-3">
                 <div class="flex items-center gap-2 border-b border-white/5 pb-2">
-                    <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400 animate-pulse"></i>
+                    <i data-lucide="sparkles" class="w-4 h-4 text-orange-400 animate-pulse"></i>
                     <span class="text-xs font-bold text-slate-200 uppercase tracking-widest" id="sb-title">⚡ UNDP Evaluator Sandbox</span>
                 </div>
                 <div class="flex flex-wrap gap-2.5 items-center">
                     <span class="text-[10px] font-bold text-slate-400 uppercase mr-1" id="sb-lbl">Load Simulation:</span>
-                    <button onclick="generateSimulationScenario('flood')" class="bg-indigo-600/15 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
+                    <button onclick="generateSimulationScenario('flood')" class="bg-orange-600/15 hover:bg-orange-600/30 text-orange-400 border border-orange-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
                         🌊 Flood (Slovenia)
                     </button>
-                    <button onclick="generateSimulationScenario('earthquake')" class="bg-indigo-600/15 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
+                    <button onclick="generateSimulationScenario('earthquake')" class="bg-orange-600/15 hover:bg-orange-600/30 text-orange-400 border border-orange-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
                         🏚️ Earthquake (Japan)
                     </button>
-                    <button onclick="generateSimulationScenario('war')" class="bg-indigo-600/15 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
+                    <button onclick="generateSimulationScenario('war')" class="bg-orange-600/15 hover:bg-orange-600/30 text-orange-400 border border-orange-500/20 px-3.5 py-2 rounded-xl text-[10px] font-bold transition flex items-center gap-1">
                         ⚔️ War Zone (Ukraine)
                     </button>
                     <button onclick="clearSimulationScenarios()" class="bg-rose-600/10 hover:bg-rose-600/20 text-rose-400 border border-rose-500/25 px-3.5 py-2 rounded-xl text-[10px] font-bold transition ml-auto">
@@ -527,7 +527,7 @@
                 </div>
                 <div class="bg-slate-950/40 border border-white/5 rounded-2xl p-4 text-center">
                     <span class="block text-[10px] text-slate-400 uppercase font-bold mb-1" id="dash-m-restored">Restored Grid %</span>
-                    <span class="text-xl font-black text-emerald-400" id="dash-stat-restored">--</span>
+                    <span class="text-xl font-black text-orange-400" id="dash-stat-restored">--</span>
                 </div>
             </div>
 
@@ -536,7 +536,7 @@
                 <!-- Priority Operations List -->
                 <div class="space-y-3">
                     <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-1.5" id="dash-t-ops">
-                        <i data-lucide="siren" class="w-4 h-4 text-rose-500 animate-pulse"></i> Priority Operations & Debris Urgent List
+                        <i data-lucide="siren" class="w-4 h-4 text-orange-500 animate-pulse"></i> Priority Operations & Debris Urgent List
                     </h3>
                     <div id="dash-ops-list" class="space-y-2 max-h-[300px] overflow-y-auto pr-1 custom-scroll">
                         <!-- Populated dynamically -->
@@ -545,7 +545,7 @@
                 <!-- Category Distribution Charts -->
                 <div class="space-y-3">
                     <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest flex items-center gap-1.5" id="dash-t-dist">
-                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-sky-400"></i> Infrastructure Damage Density Breakdown
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-orange-400"></i> Infrastructure Damage Density Breakdown
                     </h3>
                     <div id="dash-density-chart" class="bg-slate-950/30 border border-white/5 rounded-2xl p-5 space-y-3 font-semibold">
                         <!-- Populated dynamically -->
@@ -572,7 +572,7 @@
             <div class="bg-slate-950 text-white p-5 flex justify-between items-center border-b border-white/5">
                 <div>
                     <h3 class="text-md font-bold heading-font flex items-center gap-2">
-                        <i data-lucide="plus-circle" class="w-5 h-5 text-rose-500"></i> <span id="modal-report-title">Report an Incident</span>
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-orange-500"></i> <span id="modal-report-title">Report an Incident</span>
                     </h3>
                     <p class="text-[10px] text-slate-400 font-medium" id="modal-report-sub">Your report will appear on the public map</p>
                 </div>
@@ -581,7 +581,7 @@
             <div class="p-6 space-y-4 overflow-y-auto max-h-[75vh]">
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-city">City / Location</label>
-                    <input type="text" id="in-city" placeholder="E.g. Kyiv, Paris, Ljubljana..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
+                    <input type="text" id="in-city" placeholder="E.g. Kyiv, Paris, Ljubljana..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-orange-500/50 transition font-medium">
                     <div id="in-coords-container" class="grid grid-cols-2 gap-3 hidden mt-2">
                         <div><label class="block text-[9px] font-bold text-slate-400 uppercase mb-0.5">Latitude</label><input type="text" id="in-lat" readonly class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-500 font-mono outline-none"></div>
                         <div><label class="block text-[9px] font-bold text-slate-400 uppercase mb-0.5">Longitude</label><input type="text" id="in-lng" readonly class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-500 font-mono outline-none"></div>
@@ -590,7 +590,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-type">Incident Type</label>
-                        <select id="in-type" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
+                        <select id="in-type" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-orange-500/50 font-bold text-slate-300">
                             <option value="ROADS" id="opt-roads">🚗 Roads & Bridges</option>
                             <option value="HOSPITALS" id="opt-hospitals">🏥 Hospitals & Healthcare</option>
                             <option value="SCHOOLS" id="opt-schools">🏫 Schools & Education</option>
@@ -604,31 +604,31 @@
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-severity">Severity</label>
-                        <select id="in-severity" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
+                        <select id="in-severity" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-orange-500/50 font-bold text-slate-300">
                             <option value="CRITICAL">🔴 Critical</option>
                             <option value="MEDIUM" selected>🟡 Medium</option>
-                            <option value="LOW">🔵 Low</option>
+                            <option value="LOW">⚪ Low</option>
                         </select>
                     </div>
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-photo">Photo (Optional)</label>
-                    <input type="file" id="in-photo" accept="image/*" class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[9px] file:font-bold file:bg-blue-500/10 file:text-blue-400 hover:file:bg-blue-500/20">
+                    <input type="file" id="in-photo" accept="image/*" class="w-full bg-white/5 border border-white/5 rounded-xl px-3 py-2 text-xs text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-[9px] file:font-bold file:bg-orange-500/10 file:text-orange-400 hover:file:bg-orange-500/20">
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-1.5">
                         <label class="block text-[10px] font-bold text-slate-400 uppercase" id="lbl-desc">Description</label>
-                        <button onclick="aiExpandReport()" id="btn-ai-expand" class="bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/30 text-[9px] font-bold px-2 py-1 rounded-md transition flex items-center gap-1 shadow-sm">
+                        <button onclick="aiExpandReport()" id="btn-ai-expand" class="bg-orange-600/20 hover:bg-orange-600 text-orange-300 hover:text-white border border-orange-500/30 text-[9px] font-bold px-2 py-1 rounded-md transition flex items-center gap-1 shadow-sm">
                             <i data-lucide="sparkles" class="w-3 h-3"></i> <span id="lbl-ai-expand-btn">⚡ AI Auto-Expand (10 sentences)</span>
                         </button>
                     </div>
-                    <textarea id="in-desc" rows="3" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium leading-relaxed" placeholder="Describe the situation in detail..."></textarea>
+                    <textarea id="in-desc" rows="3" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-orange-500/50 transition font-medium leading-relaxed" placeholder="Describe the situation in detail..."></textarea>
                 </div>
                 <div class="flex items-center gap-2.5 text-[10px] text-slate-500 bg-white/5 p-3 rounded-xl border border-white/5" id="report-privacy-container">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                    <i data-lucide="shield-check" class="w-4 h-4 text-orange-500 shrink-0"></i>
                     <span id="report-privacy-text">🔒 Privacy Protected: No personal information is collected. All data transfers are securely encrypted.</span>
                 </div>
-                <button onclick="submitReport()" class="w-full bg-rose-600 hover:bg-rose-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <button onclick="submitReport()" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i> <span id="btn-submit-report">SUBMIT TO MAP</span>
                 </button>
             </div>
@@ -641,7 +641,7 @@
             <div class="relative shrink-0 h-56">
                 <!-- Media Selector -->
                 <div class="absolute top-4 left-4 z-20 flex bg-slate-950/80 border border-slate-700/50 p-1 rounded-lg">
-                    <button onclick="toggleViewerMedia('photo')" id="btn-view-photo" class="text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition">📷 Photo</button>
+                    <button onclick="toggleViewerMedia('photo')" id="btn-view-photo" class="text-[9px] font-bold px-2.5 py-1 rounded bg-orange-600 text-white transition">📷 Photo</button>
                     <button onclick="toggleViewerMedia('satellite')" id="btn-view-sat" class="text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition ml-1">🛰️ Satellite Map</button>
                 </div>
                 
@@ -651,7 +651,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none z-10"></div>
                 <button onclick="closeFSModal('analysis-modal')" class="absolute top-4 right-4 text-white bg-slate-950/70 hover:bg-slate-950 border border-white/10 text-xs px-3.5 py-1.5 rounded-xl font-bold transition z-20">✕ Close</button>
                 <p id="viewer-location" class="absolute bottom-4 left-5 text-white text-sm font-bold z-20"></p>
-                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-blue-600 shadow-md z-20"></span>
+                <span id="viewer-type-badge" class="absolute bottom-4 right-5 text-white text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider bg-orange-600 shadow-md z-20"></span>
             </div>
             <div class="p-6 overflow-y-auto space-y-4">
                 <div id="viewer-desc" class="text-xs text-slate-300 leading-relaxed prose prose-invert prose-xs max-w-none"></div>
@@ -660,7 +660,7 @@
                     <p id="viewer-safety-text" class="text-xs text-amber-300/80 leading-relaxed"></p>
                 </div>
                 <div class="flex gap-3">
-                    <button id="viewer-ai-btn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                    <button id="viewer-ai-btn" class="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
                         <i data-lucide="sparkles" class="w-4 h-4"></i> <span id="viewer-ai-btn-lbl">AI Report Analysis</span>
                     </button>
                     <button id="viewer-map-btn" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-3.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 border border-white/5">
@@ -668,9 +668,9 @@
                     </button>
                 </div>
                 <!-- AI Analysis Container -->
-                <div id="viewer-ai-container" class="hidden bg-slate-950 border border-indigo-500/30 rounded-2xl p-4 space-y-2 mt-4">
+                <div id="viewer-ai-container" class="hidden bg-slate-950 border border-orange-500/30 rounded-2xl p-4 space-y-2 mt-4">
                     <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                        <span class="text-[9px] font-extrabold text-indigo-400 uppercase tracking-wider flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Gemini AI Real-time Classification</span>
+                        <span class="text-[9px] font-extrabold text-orange-400 uppercase tracking-wider flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Gemini AI Real-time Classification</span>
                         <button onclick="document.getElementById('viewer-ai-container').classList.add('hidden')" class="text-slate-500 hover:text-white text-xs">✕</button>
                     </div>
                     <div id="viewer-ai-content" class="text-xs text-slate-300 leading-relaxed font-medium prose prose-invert prose-xs max-w-none">
@@ -685,7 +685,7 @@
     <div id="camera-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[9999] hidden items-center justify-center p-4">
         <div class="bg-slate-900 border border-white/10 rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden max-h-[90vh] flex flex-col">
             <div class="bg-slate-950 text-white p-5 flex justify-between items-center border-b border-white/5 shrink-0">
-                <h3 class="text-md font-bold heading-font flex items-center gap-2"><i data-lucide="video" class="w-5 h-5 text-emerald-400"></i> <span id="cam-modal-title">Live Road Cameras – Slovenia</span></h3>
+                <h3 class="text-md font-bold heading-font flex items-center gap-2"><i data-lucide="video" class="w-5 h-5 text-orange-400"></i> <span id="cam-modal-title">Live Road Cameras – Slovenia</span></h3>
                 <button onclick="closeFSModal('camera-modal')" class="text-slate-400 hover:text-white transition text-xl font-bold">×</button>
             </div>
             <div id="camera-feed-container" class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 overflow-y-auto"></div>
@@ -723,7 +723,7 @@
             <div class="bg-slate-950 text-white p-5 flex justify-between items-center border-b border-white/5">
                 <div>
                     <h3 class="text-md font-bold heading-font flex items-center gap-2">
-                        <i data-lucide="lock" class="w-5 h-5 text-sky-400"></i> <span id="login-modal-title">Sign In</span>
+                        <i data-lucide="lock" class="w-5 h-5 text-orange-400"></i> <span id="login-modal-title">Sign In</span>
                     </h3>
                     <p class="text-[10px] text-slate-400 font-medium" id="login-modal-subtitle">Authorized emergency response profile access</p>
                 </div>
@@ -732,15 +732,15 @@
             <div class="p-6 space-y-4">
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-username">Email / Username</label>
-                    <input type="text" id="login-username" placeholder="E.g. evaluator@undp.org..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
+                    <input type="text" id="login-username" placeholder="E.g. evaluator@undp.org..." class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-orange-500/50 transition font-medium">
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-password">Password</label>
-                    <input type="password" id="login-password" placeholder="••••••••" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium">
+                    <input type="password" id="login-password" placeholder="••••••••" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-orange-500/50 transition font-medium">
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-role">Select Role</label>
-                    <select id="login-role" onchange="togglePINField()" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-blue-500/50 font-bold text-slate-300">
+                    <select id="login-role" onchange="togglePINField()" class="w-full bg-slate-950 border border-white/5 rounded-xl px-4 py-3 text-xs outline-none focus:border-orange-500/50 font-bold text-slate-300">
                         <option value="EVALUATOR" selected>🇺🇳 UNDP Crisis Evaluator</option>
                         <option value="OFFICER">🇸🇮 Civil Protection Officer</option>
                         <option value="VOLUNTEER">🤝 Registered Responder / Volunteer</option>
@@ -749,9 +749,9 @@
                 </div>
                 <div id="pin-container">
                     <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5" id="lbl-pin">Authorization PIN (Default: 1234)</label>
-                    <input type="text" id="login-pin" value="1234" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-blue-500/50 transition font-medium font-mono">
+                    <input type="text" id="login-pin" value="1234" class="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-600 outline-none focus:border-orange-500/50 transition font-medium font-mono">
                 </div>
-                <button onclick="submitLogin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+                <button onclick="submitLogin()" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3.5 rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
                     <i data-lucide="log-in" class="w-4 h-4"></i> <span id="btn-submit-login">SIGN IN</span>
                 </button>
             </div>
@@ -1561,7 +1561,7 @@
 
     async function loadNews() {
         const feed = document.getElementById('news-feed');
-        feed.innerHTML = `<div class="text-center py-12"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-3"></div><p class="text-xs text-slate-400 font-medium">${T('loading-news')}</p></div>`;
+        feed.innerHTML = `<div class="text-center py-12"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto mb-3"></div><p class="text-xs text-slate-400 font-medium">${T('loading-news')}</p></div>`;
 
         // Prepopulate with Bootstrap fallback array so the map is instantly working and full of symbols!
         let allItems = [...REAL_FALLBACK_REPORTS];
@@ -1630,7 +1630,7 @@
             const btn = document.getElementById(buttons[k]);
             if (!btn) return;
             if (k === currentFilter) {
-                btn.className = 'bg-blue-600 text-white text-[10px] font-extrabold px-4 py-1.5 rounded-full border border-blue-600 shadow-sm whitespace-nowrap transition';
+                btn.className = 'bg-orange-600 text-white text-[10px] font-extrabold px-4 py-1.5 rounded-full border border-orange-600 shadow-sm whitespace-nowrap transition';
             } else {
                 let hover = 'hover:bg-amber-500/10 hover:text-amber-400 hover:border-amber-500/20';
                 if (k === 'WAR') hover = 'hover:bg-rose-500/10 hover:text-rose-400 hover:border-rose-500/20';
@@ -1678,15 +1678,15 @@
             if (r.type === 'WAR') { badgeClass = 'badge-war'; typeIcon = '⚔️'; }
             else if (r.type === 'ECONOMY') { badgeClass = 'badge-economy'; typeIcon = '📈'; }
             else if (r.type === 'POŽAR') { badgeClass = 'bg-red-500/10 text-red-400 border border-red-500/20'; typeIcon = '🔥'; }
-            else if (r.type === 'POPLAVA') { badgeClass = 'bg-blue-500/10 text-blue-400 border border-blue-500/20'; typeIcon = '💧'; }
-            else if (r.type === 'POTRES') { badgeClass = 'bg-purple-500/10 text-purple-400 border border-purple-500/20'; typeIcon = '🏚️'; }
+            else if (r.type === 'POPLAVA') { badgeClass = 'bg-orange-500/10 text-orange-400 border border-orange-500/20'; typeIcon = '💧'; }
+            else if (r.type === 'POTRES') { badgeClass = 'bg-orange-500/10 text-orange-400 border border-orange-500/20'; typeIcon = '🏚️'; }
 
             let severityBadge = '<span class="text-[8px] font-extrabold px-1.5 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-md">🟡 MED</span>';
             if (r.severity === 'CRITICAL') severityBadge = '<span class="text-[8px] font-extrabold px-1.5 py-0.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-md">🔴 CRIT</span>';
-            if (r.severity === 'LOW') severityBadge = '<span class="text-[8px] font-extrabold px-1.5 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-md">🔵 LOW</span>';
+            if (r.severity === 'LOW') severityBadge = '<span class="text-[8px] font-extrabold px-1.5 py-0.5 bg-zinc-500/10 text-zinc-400 border border-zinc-500/20 rounded-md">⚪ LOW</span>';
 
             const card = document.createElement('div');
-            card.className = 'glass-panel rounded-2xl p-4 flex gap-4 transition duration-300 hover:scale-[1.01] hover:border-blue-500/30 hover:bg-white/[0.04] cursor-pointer';
+            card.className = 'glass-panel rounded-2xl p-4 flex gap-4 transition duration-300 hover:scale-[1.01] hover:border-orange-500/30 hover:bg-white/[0.04] cursor-pointer';
             card.onclick = () => openAnalysis(r);
             card.innerHTML = `
                 <img src="${r.img}" class="w-24 h-24 rounded-xl object-cover shrink-0 border border-white/5" alt="${r.type}" onerror="this.src='${imgTags['INFO']}'">
@@ -1701,11 +1701,11 @@
                             </div>
                             <span class="text-[9px] text-slate-400 font-bold shrink-0">${r.date}</span>
                         </div>
-                        <h4 class="text-xs sm:text-sm font-bold text-slate-100 leading-snug hover:text-blue-400 transition line-clamp-2">${r.title}</h4>
+                        <h4 class="text-xs sm:text-sm font-bold text-slate-100 leading-snug hover:text-orange-400 transition line-clamp-2">${r.title}</h4>
                         <p class="text-[10px] sm:text-xs text-slate-400 font-medium line-clamp-2 mt-1 leading-relaxed">${r.desc}</p>
                     </div>
                     <div class="flex justify-end mt-2">
-                        <span class="text-[9px] text-blue-400 font-extrabold tracking-wider flex items-center gap-1">ANALYSIS →</span>
+                        <span class="text-[9px] text-orange-400 font-extrabold tracking-wider flex items-center gap-1">ANALYSIS →</span>
                     </div>
                 </div>
             `;
@@ -1722,7 +1722,7 @@
 
                 const icon = L.divIcon({ className: `pulse-marker ${pulseClass}`, iconSize: [14,14], iconAnchor: [7,7] });
                 const marker = L.marker([r.lat, r.lng], { icon }).addTo(map);
-                marker.bindPopup(`<div style="font-family:'Inter',sans-serif;padding:2px;min-width:160px;background:#0f172a;color:#fff;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#0284c7;letter-spacing:1px;">${r.type}</span><h5 style="margin:4px 0 2px;font-size:11px;font-weight:700;color:#f1f5f9;">${r.title.substring(0,60)}...</h5><p style="font-size:9px;color:#94a3b8;margin-bottom:5px;">${r.source}</p><button onclick="focusOnReport('${r.id}')" style="background:#0284c7;color:#fff;font-size:9px;border:none;padding:6px 8px;border-radius:4px;font-weight:800;cursor:pointer;width:100%;box-shadow:0 2px 4px rgba(0,0,0,0.3)">DETALJI / DETAILS</button></div>`);
+                marker.bindPopup(`<div style="font-family:'Inter',sans-serif;padding:2px;min-width:160px;background:#18181b;color:#fff;"><span style="font-size:8px;font-weight:800;text-transform:uppercase;color:#f97316;letter-spacing:1px;">${r.type}</span><h5 style="margin:4px 0 2px;font-size:11px;font-weight:700;color:#f1f5f9;">${r.title.substring(0,60)}...</h5><p style="font-size:9px;color:#94a3b8;margin-bottom:5px;">${r.source}</p><button onclick="focusOnReport('${r.id}')" style="background:#f97316;color:#fff;font-size:9px;border:none;padding:6px 8px;border-radius:4px;font-weight:800;cursor:pointer;width:100%;box-shadow:0 2px 4px rgba(0,0,0,0.3)">DETALJI / DETAILS</button></div>`);
                 markers.push(marker);
             }
         });
@@ -1757,17 +1757,17 @@
         const badge = document.getElementById('viewer-type-badge');
         badge.innerText = r.type;
         let bb = 'bg-slate-500 text-white';
-        if (r.type === 'WAR') bb = 'bg-rose-600 text-white shadow-rose-600/25';
-        else if (r.type === 'ECONOMY') bb = 'bg-emerald-500 text-slate-950 shadow-emerald-500/25';
+        if (r.type === 'WAR') bb = 'bg-orange-600 text-white shadow-orange-600/25';
+        else if (r.type === 'ECONOMY') bb = 'bg-zinc-700 text-white shadow-zinc-700/25';
         else if (r.type === 'DISASTER') bb = 'bg-orange-500 text-slate-950 shadow-orange-500/25';
-        else if (r.type === 'POŽAR') bb = 'bg-red-500 text-white';
-        else if (r.type === 'POTRES') bb = 'bg-purple-500 text-white';
-        else if (r.type === 'ROADS') bb = 'bg-amber-500 text-slate-950 shadow-amber-500/25';
-        else if (r.type === 'HOSPITALS') bb = 'bg-purple-500 text-white shadow-purple-500/25';
-        else if (r.type === 'SCHOOLS') bb = 'bg-indigo-500 text-white shadow-indigo-500/25';
-        else if (r.type === 'UTILITIES') bb = 'bg-cyan-500 text-slate-950 shadow-cyan-500/25';
-        else if (r.type === 'RESIDENTIAL') bb = 'bg-blue-500 text-white shadow-blue-500/25';
-        else if (r.type === 'PUBLIC') bb = 'bg-emerald-500 text-slate-950 shadow-emerald-500/25';
+        else if (r.type === 'POŽAR') bb = 'bg-orange-600 text-white';
+        else if (r.type === 'POTRES') bb = 'bg-orange-500 text-slate-950';
+        else if (r.type === 'ROADS') bb = 'bg-orange-500 text-slate-950 shadow-orange-500/25';
+        else if (r.type === 'HOSPITALS') bb = 'bg-zinc-700 text-white shadow-zinc-700/25';
+        else if (r.type === 'SCHOOLS') bb = 'bg-zinc-700 text-white shadow-zinc-700/25';
+        else if (r.type === 'UTILITIES') bb = 'bg-orange-500 text-slate-950 shadow-orange-500/25';
+        else if (r.type === 'RESIDENTIAL') bb = 'bg-orange-500 text-white shadow-orange-500/25';
+        else if (r.type === 'PUBLIC') bb = 'bg-zinc-700 text-white shadow-zinc-700/25';
         
         badge.className = `absolute bottom-4 right-5 text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider ${bb} shadow-lg z-20`;
 
@@ -1795,13 +1795,13 @@
         if (mode === 'photo') {
             img.classList.remove('hidden');
             sat.classList.add('hidden');
-            btnPhoto.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition';
+            btnPhoto.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-orange-600 text-white transition';
             btnSat.className = 'text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition ml-1';
         } else {
             img.classList.add('hidden');
             sat.classList.remove('hidden');
             btnPhoto.className = 'text-[9px] font-bold px-2.5 py-1 rounded text-slate-400 hover:text-white transition';
-            btnSat.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-blue-600 text-white transition ml-1';
+            btnSat.className = 'text-[9px] font-bold px-2.5 py-1 rounded bg-orange-600 text-white transition ml-1';
 
             if (activeViewingReport && activeViewingReport.lat && activeViewingReport.lng) {
                 setTimeout(() => {
@@ -2009,20 +2009,20 @@
         wrapper.className = `flex items-start gap-3 max-w-[85%] ${self ? 'ml-auto justify-end flex-row-reverse' : ''}`;
 
         let bgClass = 'bg-white/5 border border-white/5 text-slate-200 shadow-md';
-        let avatarBg = 'bg-blue-500/10 text-blue-400 border border-blue-500/25', avatarText = 'AI';
-        if (self) { bgClass = 'bg-blue-600 text-white font-medium shadow-md'; avatarBg = 'bg-slate-800 text-slate-100 border border-slate-700'; avatarText = 'ME'; }
+        let avatarBg = 'bg-orange-500/10 text-orange-400 border border-orange-500/25', avatarText = 'AI';
+        if (self) { bgClass = 'bg-orange-600 text-white font-medium shadow-md'; avatarBg = 'bg-zinc-800 text-zinc-100 border border-zinc-700'; avatarText = 'ME'; }
         if (sender === 'SYS') { bgClass = 'bg-amber-500/10 border border-amber-500/20 text-amber-300'; avatarBg = 'bg-amber-500 text-slate-950'; avatarText = '!'; }
 
         let ttsButton = '';
         if (!self && !isTyping && sender === 'AI') {
             const enc = encodeURIComponent(text);
-            ttsButton = `<button onclick="speakText(decodeURIComponent('${enc}'))" class="mt-2.5 text-[9px] bg-slate-800 hover:bg-blue-500/10 border border-slate-700 hover:border-blue-500/30 text-blue-400 px-2 py-1 rounded-md font-bold transition flex items-center gap-1 shadow-sm"><i data-lucide="volume-2" class="w-3 h-3"></i> Poslušaj / Listen</button>`;
+            ttsButton = `<button onclick="speakText(decodeURIComponent('${enc}'))" class="mt-2.5 text-[9px] bg-zinc-850 hover:bg-orange-500/10 border border-zinc-800 hover:border-orange-500/30 text-orange-400 px-2 py-1 rounded-md font-bold transition flex items-center gap-1 shadow-sm"><i data-lucide="volume-2" class="w-3 h-3"></i> Poslušaj / Listen</button>`;
         }
 
         wrapper.innerHTML = `
             <div class="w-8 h-8 rounded-xl ${avatarBg} flex items-center justify-center text-xs font-bold shrink-0 shadow-sm">${avatarText}</div>
             <div class="${bgClass} p-3.5 rounded-2xl ${self ? 'rounded-tr-sm' : 'rounded-tl-sm'} text-xs leading-relaxed max-w-full">
-                ${isTyping ? '<div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce [animation-delay:0.4s]"></span></div>' : marked.parse(text)}
+                ${isTyping ? '<div class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-bounce [animation-delay:0.4s]"></span></div>' : marked.parse(text)}
                 ${ttsButton}
             </div>
         `;
@@ -2058,9 +2058,9 @@
         document.getElementById(tabId).classList.remove('hidden');
         document.querySelectorAll('[id^="btn-tab-"]').forEach(btn => btn.className = 'flex-1 pb-2 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition');
         const activeBtn = document.getElementById('btn-' + tabId);
-        if (tabId === 'tab-flood') activeBtn.className = 'flex-1 pb-2 border-b-2 border-sky-500 text-sky-400 transition font-bold';
+        if (tabId === 'tab-flood') activeBtn.className = 'flex-1 pb-2 border-b-2 border-orange-500 text-orange-400 transition font-bold';
         else if (tabId === 'tab-fire') activeBtn.className = 'flex-1 pb-2 border-b-2 border-rose-500 text-rose-400 transition font-bold';
-        else activeBtn.className = 'flex-1 pb-2 border-b-2 border-purple-500 text-purple-400 transition font-bold';
+        else activeBtn.className = 'flex-1 pb-2 border-b-2 border-orange-500 text-orange-400 transition font-bold';
     }
 
     function openReportModal(lat = null, lng = null) {
@@ -2120,7 +2120,7 @@
                         <span class="absolute top-2 left-2 bg-rose-600 text-white text-[8px] font-black px-2 py-0.5 rounded flex items-center gap-1 z-10"><span class="w-1 h-1 rounded-full bg-white animate-ping"></span> LIVE FEED</span>
                         ${mediaHtml}
                     </div>
-                    <div class="p-3 bg-slate-900 text-[9px] text-sky-400 font-mono mt-auto border-t border-slate-800">
+                    <div class="p-3 bg-zinc-950 text-[9px] text-orange-400 font-mono mt-auto border-t border-white/5">
                         <span class="font-bold text-white block">FEED_${String(i+1).padStart(2,'0')} // ${feed.loc}</span>
                         <span class="text-slate-500">${now.toLocaleString()}</span>
                     </div>
@@ -2455,15 +2455,15 @@
         chartContainer.innerHTML = '';
 
         const typeMap = {
-            'WAR': { label: T('opt-war') || 'War / Conflict', color: 'from-rose-500 to-red-700' },
-            'ROADS': { label: T('opt-roads') || 'Roads & Bridges', color: 'from-amber-400 to-amber-600' },
-            'HOSPITALS': { label: T('opt-hospitals') || 'Hospitals', color: 'from-purple-500 to-purple-700' },
-            'SCHOOLS': { label: T('opt-schools') || 'Schools', color: 'from-indigo-500 to-indigo-700' },
-            'UTILITIES': { label: T('opt-utilities') || 'Power/Water Grid', color: 'from-sky-400 to-blue-600' },
-            'RESIDENTIAL': { label: T('opt-residential') || 'Residential Buildings', color: 'from-blue-500 to-blue-700' },
-            'PUBLIC': { label: T('opt-public') || 'Public Buildings', color: 'from-emerald-500 to-emerald-700' },
+            'WAR': { label: T('opt-war') || 'War / Conflict', color: 'from-orange-700 to-red-900' },
+            'ROADS': { label: T('opt-roads') || 'Roads & Bridges', color: 'from-orange-500 to-orange-700' },
+            'HOSPITALS': { label: T('opt-hospitals') || 'Hospitals', color: 'from-zinc-500 to-zinc-700' },
+            'SCHOOLS': { label: T('opt-schools') || 'Schools', color: 'from-zinc-500 to-zinc-700' },
+            'UTILITIES': { label: T('opt-utilities') || 'Power/Water Grid', color: 'from-orange-400 to-orange-600' },
+            'RESIDENTIAL': { label: T('opt-residential') || 'Residential Buildings', color: 'from-orange-400 to-orange-600' },
+            'PUBLIC': { label: T('opt-public') || 'Public Buildings', color: 'from-zinc-500 to-zinc-700' },
             'DISASTER': { label: T('opt-disaster') || 'Natural Disasters', color: 'from-orange-500 to-orange-700' },
-            'OTHER': { label: T('opt-other') || 'Other Damage', color: 'from-slate-500 to-slate-700' }
+            'OTHER': { label: T('opt-other') || 'Other Damage', color: 'from-zinc-600 to-zinc-800' }
         };
 
         const counts = {};
@@ -2511,8 +2511,8 @@
                 borderGlow = 'border-amber-500/20 hover:border-amber-500/40 hover:bg-amber-500/[0.02]';
                 dotColor = 'bg-amber-500';
             } else if (r.severity === 'LOW') {
-                borderGlow = 'border-blue-500/20 hover:border-blue-500/40 hover:bg-blue-500/[0.02]';
-                dotColor = 'bg-blue-500';
+                borderGlow = 'border-zinc-500/20 hover:border-zinc-500/40 hover:bg-zinc-500/[0.02]';
+                dotColor = 'bg-zinc-500';
             }
 
             const item = document.createElement('div');
@@ -2529,7 +2529,7 @@
                     <p class="text-[9px] text-slate-500 line-clamp-1 mt-0.5">${r.desc}</p>
                 </div>
                 <div class="shrink-0 text-right">
-                    <span class="text-[9px] text-indigo-400 font-extrabold uppercase bg-indigo-500/10 border border-indigo-500/25 px-2 py-0.5 rounded-md">Action Required</span>
+                    <span class="text-[9px] text-orange-400 font-extrabold uppercase bg-orange-500/10 border border-orange-500/25 px-2 py-0.5 rounded-md">Action Required</span>
                 </div>
             `;
             opsContainer.appendChild(item);
@@ -2596,7 +2596,7 @@
         const content = document.getElementById('viewer-ai-content');
         
         container.classList.remove('hidden');
-        content.innerHTML = '<div class="flex items-center gap-1.5 py-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.4s]"></span><span class="text-[10px] text-indigo-400 font-semibold uppercase ml-1">Gemini AI classifying...</span></div>';
+        content.innerHTML = '<div class="flex items-center gap-1.5 py-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-bounce [animation-delay:0.2s]"></span><span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-bounce [animation-delay:0.4s]"></span><span class="text-[10px] text-orange-400 font-semibold uppercase ml-1">Gemini AI classifying...</span></div>';
 
         const prompt = `
         You are a geospatial and disaster response AI. Analyze this crisis report and respond in a clean, structured Markdown format in the interface language (${currentLang}).

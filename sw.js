@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sos-kriza-v2';
+const CACHE_NAME = 'sos-kriza-v3';
 const urlsToCache = [
   './resevalec.html',
   './manifest.json',
